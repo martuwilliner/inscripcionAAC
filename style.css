@@ -41,10 +41,9 @@ main{
     position: fixed;
     width: 75vw;
     height: auto;
-    align-items: center;
     background-color: var(--bg);
     box-shadow: 0 0 .25rem 0rem rgba(96, 159, 159..7);
-    justify-content: flex-start;
+    justify-content: space-between;
     padding-bottom: 1rem;
 }
 
@@ -72,6 +71,7 @@ main{
     position: absolute;
     right: 1rem;
     top: 1rem;
+		z-index: 1;
 }
 
 a.btn.close{
@@ -90,11 +90,21 @@ a.btn.close{
     background-color:var(--place);
 }
 
+#form #banner{
+	width: 20%;
+	overflow: hidden;
+}
+#form #content{
+	width: 20%;
+	position: relative;
+}
+
 #form form{
 height: auto;
 padding: 1rem;
 display: flex;
 flex-flow: row wrap;
+overflow: hidden;
 }
 
 #form form fieldset:not(.special){
