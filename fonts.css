@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap');
+.lexend{
+    font-family: 'Lexend', sans-serif;
+}
+
+.thin{
+    font-weight:100;
+}
+
+.italic{
+    font-variant: italic;
+}
+.light{
+    font-weight: 300;
+}
+
+.regular{
+    font-weight: 400;
+}
+.medium{
+    font-weight:500;
+}
+.sb{
+    font-weight: 600;
+}
+.bold{
+    font-weight:700;
+}
+.eb{
+    font-weight: 800;
+}

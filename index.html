@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Formulario de Contacto | AAC </title>
+</head>
+<body>
+    
+    <main class="lexend">
+        <a href="#form" class="btn solid">Mostrar Formulario</a>
+        <section id=form>
+            <h2 class="title medium">Formulario de Contacto</h2>
+            
+            <h3 class="sub medium">Bienvenido, deje su consulta aquí y en breve será resuelta.</h3>
+
+            <nav>
+                <a href="#" class="btn close"><i class="fas fa-times"></i></a>
+            </nav>
+            <form action="/" method="post" id="form-contact">
+                <section id=left>
+
+                <fieldset>
+                    <label for="interes" class="light">¿Sobre qué le interesa consultar? <span>*</span> </label>
+                    <input type="text" id="interes" name="interes" placeholder="Seleccione el tema de su consulta" class="light">
+                </fieldset>
+
+                <fieldset>
+                    <label for="nombre" class="light">Nombre completo <span>*</span></label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" class="light">
+                </fieldset>
+                
+                
+                <fieldset>
+                    <label for="email" class="light">Email <span>*</span></label>
+                    <input type="text" id="email" name="email" placeholder="ejemplo@email.com" class="light">          
+                </fieldset>
+
+                </section >
+                <section id="right">
+
+                    <fieldset class="special">
+                        <label for="mensaje" class="light">Mensaje <span>*</span></label>
+                        <textarea name="mensaje" id="mensaje" placeholder="Escriba aquí su mensaje" class="light"></textarea>
+                    </fieldset>
+
+                </section>
+                <fieldset class="unique">
+                    <button class="btn solid primary light">Enviar Mensaje</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+
+    
+<script src="main.js"></script>
+</body>
+</html>
