@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -15,53 +15,152 @@
     <main class="lexend">
         <a href="#form" class="btn solid">Mostrar Formulario</a>
         <section id="form">
-					<figure id="banner">
-						<img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80" alt="">
-					</figure>
-					<nav>
-						<a href="#" class="btn close">
-							<i class="fas fa-times"></i>
-						</a>
-					</nav>
-					<article id="content">
-            <h2 class="title medium">Sistema de Inscripción Online</h2>
-            <h3>Bienvenido al sistema de inscripción online de 91° Congreso Argentino de Cirugía.</h3>
-            <p>Por favor complete con sus datos. Todos los campos marcados con <span>*</span> son obligatorios.</p>
+            <figure id="banner">
+                <img src="assets/doctor1.jpg" alt="">
+                </figure>
+            <nav>
+                <a href="#" class="btn close">
+                    <i class="fas fa-times"></i>
+                </a>
+            </nav>
+            <article id="content">
+                
+                <h2 class="title medium">Sistema de Inscripción Online</h2>
+                
+                <h3>Bienvenido al sistema de inscripción online de 91° Congreso Argentino de Cirugía.</h3>
+                
+                <p>Por favor complete con sus datos. Todos los campos marcados con <span>*</span> son obligatorios.</p>
         
-            
-            <form action="/" method="post" id="form-contact">
-                <section id=left>
+                <form action="/" method="post" id="form-contact">
+                    <section class="step " id="one">
 
-                <fieldset>
-                    <label for="nombre" class="light">Nombre <span>*</span> </label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="light">
-                </fieldset>
-
-                <fieldset>
-                    <label for="apellido" class="light"> Apellido <span>*</span></label>
-                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" class="light">
-                </fieldset>
-                
-                
-                <fieldset>
-                    <label for="email" class="light">Email <span>*</span></label>
-                    <input type="text" id="email" name="email" placeholder="ejemplo@email.com" class="light">          
-                </fieldset>
-
-                </section >
-                <section id="right">
-
-                    <fieldset class="special">
-                        <label for="mensaje" class="light">Categoría de inscripción <span>*</span></label>
-                        <textarea name="mensaje" id="mensaje" placeholder="Escriba aquí su mensaje" class="light"></textarea>
+                    <fieldset>
+                        <label for="nombre" class="light">Nombre <span>*</span> </label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="light">
                     </fieldset>
 
-                </section>
-                <fieldset class="unique">
-                    <button class="btn solid primary light">Enviar Mensaje</button>
-                </fieldset>
-            </form>
-						</article>
+                    <fieldset>
+                        <label for="apellido" class="light"> Apellido <span>*</span></label>
+                        <input type="text" id="apellido" name="apellido" placeholder="Apellido" class="light">
+                    </fieldset>
+                    
+                    
+                    <fieldset>
+                        <label for="email" class="light">Email <span>*</span></label>
+                        <input type="text" id="email" name="email" placeholder="ejemplo@email.com" class="light">          
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="dni" class="light">DNI <span>*</span></label>
+                        <input type="number" id="dni" name="dni" placeholder="DNI" class="light">          
+                    </fieldset>
+
+                    <fieldset class="custom-select"> 
+                        <label for="category" class="light">Categoría de inscripción <span>*</span></label>
+                        <p>Por favor seleccione la categoria correspondiente <i class="fas fa-chevron-down"></i></p>
+                        <ul class="select">
+                            <li class="option">
+                                <label for="category1">
+                                    <input type="radio" name="category" id="category1" value="Socio">
+                                    <span class="name">Socio</span>
+                                    <span class="price">$0</span>
+                                </label>
+                            </li>
+                            <li class="option">
+                                <label for="category2">
+                                <input type="radio" name="category" id="category2" value="Común">
+                                <span class="name">Común</span>
+                                <span class="price">$20.000</span>
+                                </label>
+                            </li>
+                            <li class="option">
+                                <label for="category3">
+                                    <input type="radio" name="category" id="category3" value="Residente">
+                                    <span class="name">Residente</span>
+                                    <span class="price">$13.000</span>
+                                </label>
+                            </li>
+                            <li class="option">
+                                <label for="category4">
+                                    <input type="radio" name="category" id="category4" value="Residente AAMRGG">
+                                    <span class="name">Residente AAMRGG</span>
+                                    <span class="price">$10.400</span>
+                                </label>
+                            </li>
+                            <li class="option">
+                                <label for="category5">
+                                <input type="radio" name="category" id="category5" value="Por convenio">
+                                <span class="name">Por convenio</span>
+                                <span class="price">$16.000</span>
+                                </label>
+                            </li>
+                            <li class="option">
+                                <label for="category6">
+                                <input type="radio" name="category" id="category6" value="Estudiante de medicina">
+                                <span class="name">Estudiante de medicina</span>
+                                <span class="price">$1.500</span>
+                                </label>
+                            </li>
+                            <li class="option">
+                                <label for="category7">
+                                    <input type="radio" name="category" id="category7" value="J.ANGIOLOGIA y CIRUGIA CARDIOVASCULAR">
+                                    <span class="name">J.ANGIOLOGIA y CIRUGIA CARDIOVASCULAR</span>
+                                    <span class="price">$7.000</span>
+                                </label>
+                            </li>
+                            <li class="option">
+                                <label for="category8">
+                                    <input type="radio" name="category" id="category8" value="J.CIRUGIA PLASTICA Y REPARADORA">
+                                    <span class="name">J.CIRUGIA PLASTICA Y REPARADORA</span>
+                                    <span class="price">$7.000</span>
+                                </label>
+                            </li>
+                            <li class="option">
+                                <label for="category9">
+                                    <input type="radio" name="category" id="category9" value="J.INSTRUMENTACION QUIRURGICA">
+                                    <span class="name">J.INSTRUMENTACION QUIRURGICA (SOCIOS)</span>
+                                    <span class="price">$700</span>
+                                </label>
+                            </li>
+                            <li class="option">
+                                <label for="category10">
+                                    <input type="radio" name="category" id="category10" value="J.INSTRUMENTACION QUIRURGICA SOCIOS NO SOCIOS">
+                                    <span class="name">J.INSTRUMENTACION QUIRURGICA (NO SOCIOS)</span>
+                                    <span class="price">$1.000</span>
+                                </label>
+                            </li>
+                        </ul> 
+                    </fieldset>
+                    
+                    
+                        <article class="card">
+                            <h2>Valor inscripción</h2>
+                            <h3>Residente</h3>
+                            <p>$13.000</p>
+                        </article>
+                    
+     
+                    <p id="advice"><span class="bold">IMPORTATE:</span>Si usted ya ha realizado un intento de registro previo y no le ha llegado la información de confirmación de su inscripción, escribanos a: <span class="underline"> marcos.gomez@grupoelis.com.uy</span></p>
+
+                    <fieldset class="unique">
+                        <button class="btn solid primary light">Continuar</button>
+                    </fieldset>
+
+                    </section >
+
+                    <section class="step active" id="two">
+                        <fieldset>
+                            <label for="email" class="light">Email <span>*</span></label>
+                            <input type="text" id="email" name="email" placeholder="ejemplo@email.com" class="light">          
+                        </fieldset>
+        
+                        
+                        <fieldset>
+                            <button class="btn solid primary light">Continuar</button>
+                        </fieldset>
+                    </section>
+                </form>
+            </article>
         </section>
     </main>
 
