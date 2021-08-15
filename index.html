@@ -32,6 +32,8 @@
                 <p>Por favor complete con sus datos. Todos los campos marcados con <span>*</span> son obligatorios.</p>
         
                 <form action="/" method="post" id="form-contact">
+
+										
                     <section class="step " id="one">
 
                     <fieldset>
@@ -133,6 +135,8 @@
                     </fieldset>
                     
                     
+                    
+                    
                         <article class="card">
                             <h2>Valor inscripción</h2>
                             <h3>Residente</h3>
@@ -153,8 +157,28 @@
                             <label for="email" class="light">Email <span>*</span></label>
                             <input type="text" id="email" name="email" placeholder="ejemplo@email.com" class="light">          
                         </fieldset>
-        
-                        
+                    
+                     <fieldset>
+                        <label for="celular" class="light">Número de celular <span>*</span> </label>
+                        <input type="number" id="celular1" name="celular1" placeholder="+54" class="light">
+                        <input type="number" id="celular2" name="celular2" placeholder="cod. de área" class="light">
+                        <span>15</span>
+                        <input type="tel" id="celular3" name="celular3" placeholder="número sin 15" class="light">
+                    </fieldset>
+                    
+                    <fieldset class="file">
+                      <p> Adjunte su certificado </p>
+                      <label for="subir" class="light">Adjunte certificado</label>
+                      <input type="file">
+                    </fieldset>
+                    //falta icon icon 
+                    <article>
+                      //icon
+                      <h3>Información</h3>
+                    
+                      <p>Recuerde que en caso de no adjuntar la constancia requerida, no presentarla al momento de su acreditación y/o esta no corresponde con la categoría de inscripción seleccionada, deberá abonar la diferencia monetaria que exista entre ellas.
+                      </p>
+                    </article>
                         <fieldset>
                             <button class="btn solid primary light">Continuar</button>
                         </fieldset>
