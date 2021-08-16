@@ -93,9 +93,18 @@ a.btn.close{
 }
 
 #form #banner{
-	width: 20%;
-	overflow: hidden;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+    height: 75vh;
 }
+
+#form #banner img{
+max-height: 100%;
+}
+
 #form #content{
 	width: 80%;
 	position: relative;
@@ -111,7 +120,7 @@ justify-content: space-between;
 overflow: hidden;
 }
 
-#form form fieldset:not(.special):not(.unique){
+#form form fieldset:not(.special):not(.unique):not(.multi):not(.file):not(.alter){
     height: 5.5rem;
     display: flex;
     flex-flow: row wrap;
@@ -120,14 +129,14 @@ overflow: hidden;
     margin-right:6rem;
 }
 
-#form form fieldset label{
+#form form fieldset:not(.special):not(.unique):not(.multi):not(.file):not(.alter) label{
     margin-bottom: 0.25rem;
     font-size:0.8rem;
     height: 1rem;
     flex: 1 0 100%;
 }
 
-#form form fieldset input, #form form fieldset.custom-select p{
+#form form fieldset:not(.special):not(.unique):not(.multi):not(.file):not(.alter) input, #form form fieldset.custom-select p{
     height: 2rem;
     flex: 1 0 100%;
     background-color: snow;
@@ -275,4 +284,121 @@ fieldset.unique{
     padding: 1.5rem;
     font-size: 1.5rem;
     font-weight: 500;
+}
+
+
+.popUp{
+    display: none;
+}
+
+fieldset.file {
+    height: 5.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: calc(50% - 6rem);
+    margin-right: 6rem;
+    justify-content: space-between;
+}
+
+fieldset.file input[type="file"] {
+    display: none;
+}
+
+fieldset.file p {
+    flex: 1 0 100%;
+}
+
+
+fieldset.file label {
+    background-color: var(--input);
+    flex: 1 0 auto;
+    padding: 1rem 1.25rem;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+    color: var(--primary)
+}
+
+fieldset.file a {
+    background-color: var(--bg);
+    margin: 0px;
+    margin-left: .25rem;
+    border-radius: 0rem;
+    color: var(--primary);
+    display: flex;
+    padding: 0;
+    width: 3rem;
+    height: 3rem;
+
+
+}
+
+fieldset.file a i {
+    border-radius: 0rem;
+    color: var(--primary);
+    flex: 1 0 auto;
+    border: .25rem solid var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+}
+
+fieldset.multi {
+    height: 5.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: calc(50% - 6rem);
+    margin-right: 6rem;
+    justify-content: space-between;
+}
+
+fieldset.multi label{
+    flex: 1 0 100%;
+}
+fieldset.multi input[type="number"]{
+    margin-right: .025rem;
+    background-color: snow;
+    border: .05rem solid var(--input);
+    padding: .25rem;
+}
+fieldset.multi #celular1{
+    width: 25%;
+}
+fieldset.multi #celular2{
+    width: 25%;
+}
+
+
+fieldset.alter {
+    background-color: var(--input);
+    padding: 1rem;
+    border-radius: .5rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+fieldset.alter p {
+    color:var(--primary);
+    font-weight: 600;
+}
+
+fieldset.alter  label{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    width:20%;
+    margin-top: .5rem;
+    padding:.5rem;
+    background-color: snow;
+    cursor: pointer;
+    border: .05rem solid var(--place);
+    border-radius: .5rem;
+}
+
+fieldset.alter input{
+    display:none;
 }
