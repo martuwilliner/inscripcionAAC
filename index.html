@@ -29,7 +29,7 @@
                 
                 <form action="/" method="post" id="form-contact">
                     
-                    <section class="step active " id="one">
+                    <section class="step " id="one">
                         
                         <h3>Bienvenido al sistema de inscripción online de 91° Congreso Argentino de Cirugía.</h3>
                         
@@ -150,6 +150,21 @@
 
                     <section class="step" id="two">
 
+                        <ul class="controll-step">
+                            <li>
+                                <span class="indicator"> <i class="fas fa-check"></i></span>
+                                <span>Validación de Usuario</span>
+                            </li>
+                            <li class="active">
+                                <span class="indicator"> 2 </span>
+                                <span>Datos de Inscripción</span>
+                            </li>
+                            <li>
+                                <span class="indicator"> 3 </span>
+                                <span>Pago de Inscripción</span>
+                            </li>
+                        </ul>
+
                         <fieldset>
                             <label for="especialidad" class="light">Especialidad <span>*</span></label>
                             <input type="text" id="especialidad" name="especialidad" placeholder="Por favor seleccione su especialidad" class="light">          
@@ -196,15 +211,15 @@
 
                         <fieldset class="alter">
                             <p> ¿Desea participar de manera presencial? </p>
+                            <input type="radio" id="present1" name="present" data-pop="yes" value="yes">
                             <label for="present1" class="light">
                                 Si
                             </label>
-                            <input type="radio" id="present1" name="present" data-pop="yes" value="yes">
 
+                            <input type="radio" id="present2" name="present" data-pop="no" value="no">
                             <label for="present2" class="light">
                                 No
                             </label>
-                            <input type="radio" id="present2" name="present" data-pop="no" value="no">
 
                         </fieldset>
 
@@ -231,29 +246,217 @@
                     </section>
 
                     <section class="step" id="three">
-                        
+                        <ul class="controll-step">
+                            <li>
+                                <span class="indicator"> <i class="fas fa-check"></i></span>
+                                <span>Validación de Usuario</span>
+                            </li>
+                            <li class="active">
+                                <span class="indicator"> 2 </span>
+                                <span>Datos de Inscripción</span>
+                            </li>
+                            <li>
+                                <span class="indicator"> 3 </span>
+                                <span>Pago de Inscripción</span>
+                            </li>
+                        </ul>
                         <h3>Al participar de manera presencial, usted tiene la posibilidad de inscribirse a nuestros cursos.</h3>
                         <p>Seleccione a cuál/es cursos desea participar y se sumará al valor final de su inscripción</p>
-                        <fieldset class="select">
-                            <li class="option">
-                                <label for="category1">
-                                        <input type="checkbox" name="curso" id="curso1" value="Cirugía bariátrica y metabólica">
-                                        <span class="name">Socio</span>
-                                        <span class="price">$0</span>
-                                </label>
-                            </li>
-
+                        <fieldset class="custom-select extended">
+                            <ul class="select active full">
+                                <li class="option">
+                                    <label for="curso1">
+                                            <input type="checkbox" name="curso" id="curso1" value="Cirugía bariátrica y metabólica">
+                                            <span class="check"></span>
+                                            <span class="course">Cirugía bariátrica y metabólica</span>
+                                            <span class="price">$1300</span>
+                                            <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option">
+                                    <label for="curso2">
+                                        <input type="checkbox" name="curso" id="curso2" value="Cirugía laparoscópica y mininvasiva de avanzada">
+                                        <span class="check"></span>
+                                        <span class="course">Cirugía laparoscópica y mininvasiva de avanzada</span>
+                                        <span class="price">$1300</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option">
+                                    <label for="curso3">
+                                        <input type="checkbox" name="curso" id="curso3" value="Cirugía de la pared abdominal">
+                                        <span class="check"></span>
+                                        <span class="course">Cirugía de la pared abdominal</span>
+                                        <span class="price">$1300</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option">
+                                    <label for="curso4">
+                                        <input type="checkbox" name="curso" id="curso4" value="Cirugía del trauma">
+                                        <span class="check"></span>
+                                        <span class="course">Cirugía del trauma</span>
+                                        <span class="price">$1300</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option">
+                                    <label for="curso5">
+                                        <input type="checkbox" name="curso" id="curso5" value="Cirugía hepatobiliopancreática">
+                                        <span class="check"></span>
+                                        <span class="course">Cirugía hepatobiliopancreática</span>
+                                        <span class="price">$1300</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option"> 
+                                    <label for="curso6">
+                                        <input type="checkbox" name="curso" id="curso6" value="Técnica quirúrgica laparoscópica">
+                                        <span class="check"></span>
+                                        <span class="course">Técnica quirúrgica laparoscópica</span>
+                                        <span class="price">$700</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option"> 
+                                    <label for="curso6">
+                                        <input type="checkbox" name="curso" id="curso6" value="Técnica quirúrgica laparoscópica">
+                                        <span class="check"></span>
+                                        <span class="course">Técnica quirúrgica laparoscópica</span>
+                                        <span class="price">$700</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option"> 
+                                    <label for="curso7">
+                                        <input type="checkbox" name="curso" id="curso7" value="Cirugía Plástica y Reparadora">
+                                        <span class="check"></span>
+                                        <span class="course">Cirugía Plástica y Reparadora</span>
+                                        <span class="price">$1300</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option"> 
+                                    <label for="curso8">
+                                        <input type="checkbox" name="curso" id="curso8" value="Flebología actual en servicios de Cirugía">
+                                        <span class="check"></span>
+                                        <span class="course">Flebología actual en servicios de Cirugía</span>
+                                        <span class="price">$1300</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option"> 
+                                    <label for="curso9">
+                                        <input type="checkbox" name="curso" id="curso9" value="Cirugía toráctica">
+                                        <span class="check"></span>
+                                        <span class="course">Cirugía toráctica</span>
+                                        <span class="price">$1300</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option"> 
+                                    <label for="curso10">
+                                        <input type="checkbox" name="curso" id="curso10" value="Coloproctología">
+                                        <span class="check"></span>
+                                        <span class="course">Coloproctología</span>
+                                        <span class="price">$1300</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option"> 
+                                    <label for="curso10">
+                                        <input type="checkbox" name="curso" id="curso10" value="CA-ACS">
+                                        <span class="check"></span>
+                                        <span class="course">CA-ACS</span>
+                                        <span class="price">$1300</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                                <li class="option"> 
+                                    <label for="curso10">
+                                        <input type="checkbox" name="curso" id="curso10" value="Liderazgo en Cirugía">
+                                        <span class="check"></span>
+                                        <span class="course">Liderazgo en Cirugía</span>
+                                        <span class="price">$1300</span>
+                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                    </label>
+                                </li>
+                            </ul>
                         </fieldset>
                         <fieldset class="unique">              
                             <button type="button" class="btn solid primary light" id="last1" data-step="two">Atras</button>
-                            <button type="button" class="btn solid primary light" id="next2" data-step="one">Continuar</button>
+                            <button type="button" class="btn solid primary light" id="next2" data-step="four">Continuar</button>
                         </fieldset>
                         
                     </section>
 
+                    <section class="step active" id="four">
+                        <ul class="controll-step">
+                            <li>
+                                <span class="indicator"> <i class="fas fa-check"></i></span>
+                                <span>Validación de Usuario</span>
+                            </li>
+                            <li class="">
+                                <span class="indicator"> <i class="fas fa-check"></i> </span>
+                                <span>Datos de Inscripción</span>
+                            </li>
+                            <li class="active">
+                                <span class="indicator"> 3 </span>
+                                <span>Pago de Inscripción</span>
+                            </li>
+                        </ul>
+                        <h3 class="title">¡Ya casi hemos terminado!</h3>
+                        
+                        <p class="resume">Categoría de Inscripción</p>
+
+                        <fieldset class="info">
+                            <p>Residente</p>
+                            <p>$13.000</p>
+                        </fieldset>
+
+
+                        <p class="resume">Cursos Elegidos</p>
+                        
+                        <fieldset class="info">
+                            <p>Cirugía bariátrica y metabólica</p>
+                            <p>$1.300</p>
+                        </fieldset>
+
+                        <fieldset class="info">
+                            <p>Cirugía de la pared abdominal</p>
+                            <p>$1.300</p>
+                        </fieldset>
+
+                        <fieldset class="check">
+                            <label for="direccion">
+                                <input type="checkbox" name="direccion" id="direccion">
+                                <span class="check"></span>
+                            </label>  
+                            <p>Direccion de facturación</p>
+                            <p>Click aquí para introducir datos de facturación (si requiere distintos a su nombre y apellido)</p>
+                        </fieldset>
+                        
+                        <section class="total">
+                            <p>
+                                Total a pagar
+                            </p>
+                            <span class="price">
+                                $15.600
+                            </span>
+                        </section>
+                        
+                        <fieldset class="unique">              
+                            <button type="button" class="btn solid primary light" id="last1" data-step="three">Atras</button>
+                            <button type="button" class="btn solid primary light" id="next2" data-step="exito">Continuar</button>
+                        </fieldset>
+
+                    </section>
+                        
+
+
                     <section class="step" id="error">
                         <figure>
-                            <img src="/assets/error.png" alt="registro exitoso">
+                            <img src="/assets/error.png" alt="registro exitoso"> 
                         </figure>
                         <h2>Su cuota no se encuentra al día.</h2>
                         <h3>Si desea continuar con la inscripción al evento por favor comuniquese con tesorería (tesoreria@aac.org.ar) para conocer su situación respecto a la cuota societaria.</h3>

@@ -127,7 +127,7 @@ justify-content: space-between;
 overflow: hidden;
 }
 
-#form form fieldset:not(.special):not(.unique):not(.multi):not(.file):not(.alter){
+#form form fieldset:not(.special):not(.check):not(.info):not(.unique):not(.multi):not(.file):not(.alter):not(.custom-select){
     height: 5.5rem;
     display: flex;
     flex-flow: row wrap;
@@ -136,20 +136,38 @@ overflow: hidden;
     margin-right:6rem;
 }
 
-#form form fieldset:not(.special):not(.unique):not(.multi):not(.file):not(.alter) label{
+#form form fieldset:not(.special):not(.check):not(.info):not(.unique):not(.multi):not(.file):not(.alter):not(.custom-select) label{
     margin-bottom: 0.25rem;
     font-size:0.8rem;
     height: 1rem;
     flex: 1 0 100%;
 }
 
-#form form fieldset:not(.special):not(.unique):not(.multi):not(.file):not(.alter) input, #form form fieldset.custom-select p{
+#form form fieldset:not(.special):not(.check):not(.info):not(.unique):not(.multi):not(.file):not(.alter):not(.custom-select) input, #form form fieldset.custom-select p{
     height: 2rem;
     flex: 1 0 100%;
     background-color: snow;
     border: .05rem solid var(--input);
     padding: .25rem;
 }
+
+fieldset.custom-select{
+    height: 5.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: calc(50% - 6rem);
+    margin-right:6rem;
+}
+
+fieldset.custom-select.extended{
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width:100%;
+}
+
 
 #form form fieldset.custom-select p {
     color: var(--place);
@@ -191,9 +209,16 @@ fieldset .select.active{
     background-color: snow;
     box-shadow: 0px .75rem 1.25rem rgba(64, 191, 191, 0.25);
     border-radius: 0 0 1rem 1rem;
+    flex: 1 0 auto;
 }
 
-fieldset .select .option{
+fieldset .select.active.full{
+    max-height: 40vh;
+    min-height: 40vh;
+    width: 100%;
+}
+
+fieldset .select:not(.full) .option{
     width: 100%;
     height: 3rem;
     display: flex;
@@ -203,15 +228,67 @@ fieldset .select .option{
     border: .05rem solid var(--input)
 
 }
-fieldset .select .option label{
+fieldset .select:not(.full) .option label{
     flex: 1 0 auto;
     display: flex;
     flex-flow:row wrap;
     justify-content: space-between;
     padding: 0 .25rem;
 }
-fieldset .select .option input[type="radio"]{
+fieldset .select:not(.full) .option input[type="radio"]{
     display: none;
+}
+
+.select.full .option{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    flex-flow:row wrap;
+    align-items: center;    
+    margin-bottom: .25rem;
+    border: .05rem solid var(--input)
+}
+
+.select.full .option label{
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 0 auto;
+    padding: 0 1rem;
+}
+
+.check{
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    border: .05rem solid var(--input);
+    background-color: snow;
+    border-radius: .25rem;
+    margin-right: .5rem;
+}
+
+.select.full .option input:checked  ~ .check{
+    background-color: var(--place);
+}
+
+
+.select.full .option input{
+    display: none;
+}
+
+span.course {
+    flex: 1 0 auto;
+}
+
+span.price{
+    margin-right: 1rem;
+    
+}
+span.masinfo{
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 #form form span{
@@ -450,4 +527,117 @@ fieldset.alter input{
     display:none;
 }
 
+fieldset.alter  input:checked + label{
+    background-color: var(--primary);
+    color: snow;
+}
 
+
+.controll-step{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    height: 3rem;
+    margin-bottom: 1rem;;
+}
+
+.controll-step li{
+    flex: 1 0 aut0;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    
+}
+
+.controll-step li .indicator{
+    width: 2rem;
+    height: 2rem;
+    border-radius: .25rem;
+    margin-right: .25rem;
+    background-color: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.controll-step li.active .indicator{
+    background-color: var(--place);
+    color:snow !important;
+}
+
+#three h3{
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: .5rem;
+    width: 100%;
+    text-align: center;
+}
+
+#four h3{
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;   
+}
+
+.resume{
+    width: 100%; 
+}
+
+.info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: snow;
+    height: 3rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: .25rem;
+}
+
+fieldset.check{
+    display: flex;
+    background-color: snow;
+    width: 50%;
+    padding: 1rem 3.5rem;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    height: 6rem;
+}
+
+fieldset.check input[type="checkbox"]{
+    display: none;
+}
+
+fieldset.check label{
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+}
+
+
+
+fieldset.check input:checked  ~ .check{
+    background-color: var(--primary);
+}
+
+.total{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    width: 40%;
+    font-size: 1.5rem;
+    margin-left: 3rem;
+    padding: 1rem;
+}
+
+.total span{
+    font-weight: 700;
+}
