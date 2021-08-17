@@ -27,14 +27,14 @@
                 
                 <h2 class="title medium">Sistema de Inscripción Online</h2>
                 
-                <h3>Bienvenido al sistema de inscripción online de 91° Congreso Argentino de Cirugía.</h3>
-                
-                <p>Por favor complete con sus datos. Todos los campos marcados con <span>*</span> son obligatorios.</p>
-        
                 <form action="/" method="post" id="form-contact">
-										
-                    <section class="step " id="one">
-
+                    
+                    <section class="step active " id="one">
+                        
+                        <h3>Bienvenido al sistema de inscripción online de 91° Congreso Argentino de Cirugía.</h3>
+                        
+                        <p>Por favor complete con sus datos. Todos los campos marcados con <span>*</span> son obligatorios.</p>
+                
                         <fieldset>
                             <label for="nombre" class="light">Nombre <span>*</span> </label>
                             <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="light">
@@ -148,7 +148,7 @@
 
                     </section>
 
-                    <section class="step active" id="two">
+                    <section class="step" id="two">
 
                         <fieldset>
                             <label for="especialidad" class="light">Especialidad <span>*</span></label>
@@ -182,16 +182,12 @@
                             <p class="light"> Adjunte su certificado <span>*</span> </p>
                             <label for="certificado" class="light">Adjuntar certificado <i class="fas fa-file-download"></i></label>
                             <input type="file" id="certificado" name="certificado">
-                            <a href="#info" class="btn">
+                            <button type="button" data-pop="info" class="btn">
                                 <i class="fas fa-info"></i>
-                            </a>   
+                            </button>   
                         </fieldset>
 
                         <article id="info" class="popUp">
-                            <a href="#">
-                                <i class="fas fa-info"></i>
-                            </a>
-
                             <h3>Información</h3>
                             
                             <p>Recuerde que en caso de no adjuntar la constancia requerida, no presentarla al momento de su acreditación y/o esta no corresponde con la categoría de inscripción seleccionada, deberá abonar la diferencia monetaria que exista entre ellas.
@@ -203,12 +199,12 @@
                             <label for="present1" class="light">
                                 Si
                             </label>
-                            <input type="radio" id="present1" name="present" value="yes">
+                            <input type="radio" id="present1" name="present" data-pop="yes" value="yes">
 
                             <label for="present2" class="light">
                                 No
                             </label>
-                            <input type="radio" id="present2" name="present" value="no">
+                            <input type="radio" id="present2" name="present" data-pop="no" value="no">
 
                         </fieldset>
 
@@ -236,6 +232,23 @@
 
                     <section class="step" id="three">
                         
+                        <h3>Al participar de manera presencial, usted tiene la posibilidad de inscribirse a nuestros cursos.</h3>
+                        <p>Seleccione a cuál/es cursos desea participar y se sumará al valor final de su inscripción</p>
+                        <fieldset class="select">
+                            <li class="option">
+                                <label for="category1">
+                                        <input type="checkbox" name="curso" id="curso1" value="Cirugía bariátrica y metabólica">
+                                        <span class="name">Socio</span>
+                                        <span class="price">$0</span>
+                                </label>
+                            </li>
+
+                        </fieldset>
+                        <fieldset class="unique">              
+                            <button type="button" class="btn solid primary light" id="last1" data-step="two">Atras</button>
+                            <button type="button" class="btn solid primary light" id="next2" data-step="one">Continuar</button>
+                        </fieldset>
+                        
                     </section>
 
                     <section class="step" id="error">
@@ -244,7 +257,7 @@
                         </figure>
                         <h2>Su cuota no se encuentra al día.</h2>
                         <h3>Si desea continuar con la inscripción al evento por favor comuniquese con tesorería (tesoreria@aac.org.ar) para conocer su situación respecto a la cuota societaria.</h3>
-                        <button type="button" id="tesoreria" data-step="two" class="btn solid primary light">Contactarse con tesorería</button>
+                        <button type="button" id="tesoreria" class="btn solid primary light">Contactarse con tesorería</button>
                     </section>
                     <section class="step" id="exito">
                         <figure>
@@ -252,12 +265,10 @@
                         </figure>
                         <h2>Inscripción exitosa</h2>
                         <h3>Por favor revise su bandeja de entrada para obtener más información</h3>
-                        <button type="button" id="close" data-step="two" class="btn solid primary light">Continuar</button>
+                        <button type="button" id="close" class="btn solid primary light">Continuar</button>
                     </section>
                 </form>
             </article>
-
-             <!-- step 2 -->
             
         </section>
     </main>

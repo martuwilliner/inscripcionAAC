@@ -13,6 +13,13 @@ main{
     background-color: white;
 }
 
+#content h3{
+    margin-left: .5rem;
+}
+#content p{
+    margin-left: .5rem;
+}
+
 .btn{
     padding: 1rem 1.25rem;
     margin: 0.25rem;
@@ -203,7 +210,7 @@ fieldset .select .option label{
     justify-content: space-between;
     padding: 0 .25rem;
 }
-fieldset .select .option input{
+fieldset .select .option input[type="radio"]{
     display: none;
 }
 
@@ -288,7 +295,41 @@ fieldset.unique{
 
 
 .popUp{
-    display: none;
+    height:0;
+    overflow: hidden;
+    transform: scale(0);
+    transition: all .3s;
+    position: fixed;
+    bottom: 20%;
+    left: 30%;
+}
+
+.popUp.active{
+    display: flex;
+    flex-flow: column wrap;
+    background-color:snow;
+    transform: scale(1);
+    height:15vh;
+    width: 25%;
+    padding: 1rem;
+    justify-content:center;
+    align-items: flex-start;
+    border-radius: .25rem;
+    box-shadow: 0px .75rem 1.25rem rgba(64, 191, 191, 0.25);
+}
+.popUp.active h3{
+    font-weight: 700;
+    margin-bottom: .5rem;
+}
+
+.popUp.active::before{
+    content: '';
+    position: absolute;
+    width: .25rem;
+    height:100%;
+    background-color:var(--primary);
+    left: 0;
+    top: 0;
 }
 
 fieldset.file {
@@ -319,7 +360,7 @@ fieldset.file label {
     color: var(--primary)
 }
 
-fieldset.file a {
+fieldset.file button {
     background-color: var(--bg);
     margin: 0px;
     margin-left: .25rem;
@@ -329,14 +370,14 @@ fieldset.file a {
     padding: 0;
     width: 3rem;
     height: 3rem;
-
-
+    cursor: pointer;
 }
 
-fieldset.file a i {
+fieldset.file button i {
     border-radius: 0rem;
     color: var(--primary);
     flex: 1 0 auto;
+    height: 100%;
     border: .25rem solid var(--primary);
     display: flex;
     justify-content: center;
@@ -358,7 +399,7 @@ fieldset.multi {
 fieldset.multi label{
     flex: 1 0 100%;
 }
-fieldset.multi input[type="number"]{
+fieldset.multi input[type="number"], fieldset.multi input[type="tel"]{
     margin-right: .025rem;
     background-color: snow;
     border: .05rem solid var(--input);
@@ -397,8 +438,16 @@ fieldset.alter  label{
     cursor: pointer;
     border: .05rem solid var(--place);
     border-radius: .5rem;
+    transition: all .3s ease-in-out;
+}
+
+fieldset.alter  label:hover{
+    background-color: var(--primary);
+    color: snow;
 }
 
 fieldset.alter input{
     display:none;
 }
+
+
