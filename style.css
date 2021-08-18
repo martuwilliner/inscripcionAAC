@@ -392,11 +392,11 @@ fieldset.unique{
 
 .popUp.active{
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     background-color:snow;
     transform: scale(1);
     height:15vh;
-    width: 25%;
+    width: 25vw;
     padding: 1rem;
     justify-content:center;
     align-items: flex-start;
@@ -674,4 +674,62 @@ fieldset.check input:checked  ~ .check{
 }
 #exito h3{
     font-weight: 400;
+}
+
+@media screen and (max-width:1400px) {
+    fieldset.multi{
+        justify-content: flex-start;
+    }
+   fieldset.multi input[type="tel"]{
+       width:calc(40% - 1rem);
+       margin: 0 .25rem;
+   }
+
+   fieldset.file {
+    width: calc(50% - 0);
+    margin-right: 0rem;
+   }
+
+    .popUp{
+        bottom: 15vh;
+        left: calc(25vw + 3rem);
+    }
+    .popUp{
+        bottom: 15vh;
+        left: 30vw;
+    }
+    .popUp.active{
+        bottom: 15vh;
+        left: 30vw;
+    }
+
+    #info p{
+        font-size: .75rem;
+    }
+
+    fieldset.custom-select p{
+        font-size: .75rem;
+    }
+
+    fieldset.alter{
+        width: calc(50% - 5rem)
+    }
+
+    fieldset.alter p{
+        font-size: .75rem;
+    }
+    fieldset.file label {
+        font-size:.75rem;
+    }
+
+    fieldset.file button[data-pop]{
+        transform: scale(.75);
+    }
+
+    #three p{
+        margin: .75rem 0rem;
+    }
+    .resume{
+        margin-bottom: .75rem;
+    }
 }

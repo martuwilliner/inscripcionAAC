@@ -26,6 +26,10 @@ const showPopUp = (id) => {
     }else{
         popUps.forEach(pop => pop.classList.remove("active"));
     }
+
+    setTimeout(()=>{
+        pop.classList.remove("active");
+    },5000)
     
     console.clear();
     console.log(pop);
