@@ -4,6 +4,8 @@ const steps = Array.from(document.querySelectorAll(".step"))
 const present = Array.from(document.querySelectorAll('input[name="present"]'))
 const popUps = Array.from(document.querySelectorAll('.popUp'))
 const btnPop = Array.from(document.querySelectorAll('button[data-pop]'))
+const categories = Array.from(document.querySelectorAll('input[name="category"]'))
+const catLabel = document.querySelector('p[data-select="on"]')
 // Functions
 
 const showStep = (id) => {
@@ -53,4 +55,57 @@ btnPop.forEach(btn => btn.addEventListener('click',(e)=>{
     }
     showPopUp(pop);
     console.clear();
+}))
+
+
+catLabel.addEventListener('click',(e) => {
+    e.preventDefault();
+    const target = e.target;
+    const fieldset = target.parentElement;
+    const select = fieldset.querySelector(".select");
+    const classList = select.getAttribute('class')
+    const classes = classList.split(" ")
+ 
+    if(classes.includes('active')){
+        select.setAttribute('class','select')
+    }else{
+        select.setAttribute('class','select active')
+    }
+})
+
+
+categories.forEach(input => input.addEventListener('input',(e)=>{
+    e.preventDefault()
+    const target = e.target;
+    const value = String(target.value).trim();
+    const label = target.parentElement;
+    const item = label.parentElement;
+    const list = item.parentElement;
+    const fieldset = list.parentElement;
+    const select = fieldset.querySelector(".select");
+    const paragraph = fieldset.querySelector("p");
+    const card = fieldset.nextElementSibling;
+    const cardCategory = card.querySelector("h3")
+    const selectClassList = select.getAttribute('class')
+    const selectClasses = selectClassList.split(" ")
+    const cardClassList = card.getAttribute('class')
+    const cardClasses = cardClassList.split(" ")
+ 
+    if(selectClasses.includes('active')){
+        select.setAttribute('class','select')
+    }else{
+        select.setAttribute('class','select active')
+    }
+
+
+    card.setAttribute('class','card active')
+    
+    
+    if(value.length > 0){
+        cardCategory.innerHTML = value;
+        paragraph.innerText = value;
+    }
+
+    console.clear();
+    console.log(card)
 }))

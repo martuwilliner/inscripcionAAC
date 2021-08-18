@@ -13,16 +13,10 @@
 </head>
 <body>
     <main class="lexend">
-        <a href="#form" class="btn solid">Mostrar Formulario</a>
         <section id="form">
             <figure id="banner">
                 <img src="assets/doctor1.jpg" alt="">
-                </figure>
-            <nav>
-                <a href="#" class="btn close">
-                    <i class="fas fa-times"></i>
-                </a>
-            </nav>
+            </figure>
             <article id="content">
                 
                 <h2 class="title medium">Sistema de Inscripción Online</h2>
@@ -58,7 +52,7 @@
 
                         <fieldset class="custom-select"> 
                             <label for="category" class="light">Categoría de inscripción <span>*</span></label>
-                            <p>Por favor seleccione la categoria correspondiente <i class="fas fa-chevron-down"></i></p>
+                            <p data-select="on">Por favor seleccione la categoria correspondiente <i class="fas fa-chevron-down"></i></p>
                             <ul class="select">
                                 <li class="option">
                                     <label for="category1">
@@ -468,7 +462,9 @@
                         </figure>
                         <h2>Inscripción exitosa</h2>
                         <h3>Por favor revise su bandeja de entrada para obtener más información</h3>
+                        <fieldset class="unique">
                         <button type="button" id="close" class="btn solid primary light">Continuar</button>
+                        </fieldset>
                     </section>
                 </form>
             </article>
