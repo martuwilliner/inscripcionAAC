@@ -29,7 +29,7 @@ const showPopUp = (id) => {
 
     setTimeout(()=>{
         pop.classList.remove("active");
-    },5000)
+    },2500)
     
     console.clear();
     console.log(pop);
