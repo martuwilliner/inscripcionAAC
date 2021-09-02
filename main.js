@@ -6,6 +6,7 @@ const popUps = Array.from(document.querySelectorAll('.popUp'))
 const btnPop = Array.from(document.querySelectorAll('button[data-pop]'))
 const categories = Array.from(document.querySelectorAll('input[name="category"]'))
 const catLabel = document.querySelector('p[data-select="on"]')
+const formulario = document.querySelector('#form-contact');
 // Functions
 
 const showStep = (id) => {
@@ -17,6 +18,39 @@ const showStep = (id) => {
     console.clear();
     console.log(step);
 }
+
+/* validación */
+const inputAll = Array.from(document.querySelectorAll('input'));
+const dni = inputAll.find(input => input.getAttribute("id").toLowerCase().includes("dni"));
+dni.addEventListener("blur",async function (e){
+    e.preventDefault();
+    try {
+    const input = e.target;
+    const value = input.value;
+    if(value.length > 7){ //1er if para verificar que escribio y hay dígitos a comproabr
+        const server = "https://aac.raxar.com.ar"; // esta es la API que está subida
+        const source = `${server}/api/partners/${value}`;
+        console.log(source);
+        const request = await fetch(source,{
+            method:"GET",
+            mode: 'no-cors',
+            credentials: 'include',
+            cache: "no-cache",
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYjFiZjJkYzU5NzYwZWM5ZjM2YTNkMDYyNDc4Yzc1YjQzNDJmYTViNmE0NmQxZjc5NjRlNWEyYjNhZjZkZGMzNjIwNWQ4ZDRiMDQxNWM2NmUiLCJpYXQiOjE2MzA1OTM1NTEuMjYyMzYyLCJuYmYiOjE2MzA1OTM1NTEuMjYyMzY1LCJleHAiOjE2NjIxMjk1NTEuMjU3NzgxLCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.ApG91Btqg3yeePSui2UGZrHCMmRJXmXdLfPGN9RC_BqDXPf9KO8laNDNWlJY9pYX9pNkWNt7T_dMEVIbk4DJLzP4inQTSaR0R1KWdtc4zcHr8QPQdy3OW4Qs9JgLUrbdyZqQTouTUEJx_YPnRRV0v1IXoiY3VRdoFlIZL6sYVahSCqlmTP5jCpwecj4iDu7zazS8Dma3VzNFeH91PPtTOioDg2dK2IlKADPknmrHktGvAH8hPtoGiAXEzgl7RYk4ltGZYSJIQLb2zNYbBdRe_CTAj6RFb-6mMS7jgzaudz1B0koLNe7RqtCS16LzGY5z1lRNog-8hqCZxBa8APAPKIxBG0pQMaCEO9e276A5rkwH6UElKS1QftwqoM8X4d3G-RVuedK5Yl7gGDBF66oRm2X8H-zLlmU1mwL4WlHFhKoaSJrXZaZ97mNERGMCVTGm2jQE1rUPz-FWSxhXJNhPIooV9_eofdspqEnJ3E4AjlM5VQPGtWy4z6vKet8Kog7Y7-Wrj1wRZ2vPOcVh1BF7Tl7P3p4wf9R_Q5Txaq8sqm06oSEDg_Qz_mMBMSi-a_jL2uR9oolkNjhhZ0zgCNx5oDZ67HuCiF3TdK1r_aCLPoNzQ8KCVyj1qaWgYDhaUIB9MjdivSS88JyNx7pxHSbgO3_uZATF8kmUDmwU1AuX7sc'
+            })
+        })
+        const data = await request.json();
+        console.log(data)
+    }
+    } catch (error) {
+        console.log(error)
+    }
+})  //blur es cuando sale del input, para cuando ingresa era focus. Cuando escribe es input o change
+
+/* validación */
+
 
 const showPopUp = (id) => {
     const pop = popUps.find(pop => pop.getAttribute("id") == id);
