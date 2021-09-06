@@ -47,34 +47,27 @@
 
                         <fieldset>
                             <label for="dni" class="light">DNI <span>*</span></label>
-                            <input type="number" id="dni" name="dni" placeholder="DNI" class="light">          
+                            <input type="number" id="dni" name="dni" placeholder="DNI" class="light" @blur="verified">          
                         </fieldset>
 
                         <fieldset class="custom-select"> 
                             <label for="category" class="light">Categoría de inscripción <span>*</span></label>
-                            <p data-select="on">Por favor seleccione la categoria correspondiente <i class="fas fa-chevron-down"></i></p>
-                            <ul class="select">
-                                <li class="option">
-                                    <label for="category1">
-                                        <input type="radio" name="category" id="category1" value="Socio">
-                                        <span class="name">Socio</span>
-                                        <span class="price">$0</span>
-                                    </label>
-                                </li>
-                                <li class="option">
-                                    <label for="category2">
-                                    <input type="radio" name="category" id="category2" value="no">
-                                    <span class="name">No Socio</span>
-                                    <span class="price">$20.000</span>
+                            <p @click="showList" data-select="on">Por favor seleccione la categoria correspondiente <i class="fas fa-chevron-down"></i></p>
+                            <ul :class="['select',opened ? 'active' : 'null']"> 
+                                <li class="option" v-for="(item, index) in categorias" :key="index">
+                                    <label for="category{{index}}">
+                                        <input type="radio" name="category" id="category{{index}}" value="{{item.id}}">
+                                        <span class="name">{{item.nombre}}</span>
+                                        <span class="price">${{item.value}}</span>
                                     </label>
                                 </li>
                             </ul> 
                         </fieldset>
                         
-                        <article class="card">
+                        <article class="card" v-if="select">
                             <h2>Valor inscripción</h2>
-                            <h3>Residente</h3>
-                            <p>$13.000</p>  
+                            <h3>{{select.nombre}}</h3>
+                            <p>${{select.value}}</p>  
                         </article>
                         
         
@@ -420,5 +413,7 @@
 
     
 <script src="main.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="components.js"></script>
 </body>
 </html>
