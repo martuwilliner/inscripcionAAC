@@ -32,10 +32,7 @@ dni.addEventListener("blur",async function (e){
         const source = `${server}/api/partners/${value}`; 
         console.log(source);
         const request = await fetch(source,{
-            method:"GET",
-            /* mode: 'no-cors',
-            credentials: 'include',
-            cache: "no-cache" */    
+            method:"GET",   
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiZjIxYjg2ZDExNTNiMGJjODcwNTllMWZmNTg1ZTk3OTNjYjZhMjQ3Y2M5ZTJkOTI1MTNjOWMzMWE2NmI2MzY1NDM5ZTNlZTIwMmNhODA5ZGQiLCJpYXQiOjE2MzA2NzQwNzAuNDA0MjUxLCJuYmYiOjE2MzA2NzQwNzAuNDA0MjU0LCJleHAiOjE2NjIyMTAwNzAuMzk5OTM4LCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.MFHIRi5SQv1umsw2lRVdsqtGJhpmuiN-8P81agHgcDiCyXDyY9vEgY5CciFWm9mb0IHNiC9gRrYpV8cUs7IWy-VYHz7_eFRtVpOKi-iJ8sLSk3k8Kg6drVzbrojepO5nq6J_DM5Yjo-84SOYPDB70x_fwFfU4u4Q1778A9619Ou-_mNP7ypq8o8OWN5Fs02Y1MJKcXoXGySU5wnq0TDwslCYrqqNenILj-MMSgppjqwnWvT3ITbYhm57qsDDLOCB0llIb7si3edGsYWOGkt8JOD14vRlpt-faRonW9CDLs28-O_r7n3s3A6Ef2DjeGFR4nFiOGPSX3jj8GM7l01H9fueJU6ebYxSdYhNpHsqkKnPT9gELUkUHfRZtGFcXXviYxL_yqcVeujmb4TwWLhlhEuzKUmH-OlDwYbY4hEwrhnS8sGqZxzwOU9fbR6EZxPp0yehNI_X24pGMC_zzBsdixY2sTysmiyQVtXTu2qQiVqsi55_8-LUgXqSTFQLJawF36JGCT_x876gdj3exnaxdyRQxwk2avvS0DkV8GM_03cduu2AFPpqLM9fSS7kMQB8bwg0NS5TeUjgB2vIPKc_9fAWmcC7mllE7l0jCzK2_09fYfBajJJehcnYLwpNmSRK9F6KviN2GyiX2tJx1GsFRzDDQBZk-yUNl5UwrS-DNh4'
@@ -46,6 +43,7 @@ dni.addEventListener("blur",async function (e){
         console.log(balance);
 
         const siguiente = document.querySelector('#next');
+
         if(balance > 0){
             siguiente.setAttribute("data-step","error")  //toma dos atributos, devuelve el segundo
             siguiente.click(); // para que solo al poner el dni salte si hay o no error
@@ -55,8 +53,8 @@ dni.addEventListener("blur",async function (e){
         console.log(error)
         if(error != undefined){
             const siguiente = document.querySelector('#next');
-            siguiente.setAttribute("data-step","error")  //toma dos atributos, devuelve el segundo
-            siguiente.click(); // para que solo al poner el dni salte si hay o no error
+            siguiente.setAttribute("data-step","two")  //toma dos atributos, devuelve el segundo
+            /* siguiente.click(); */ // para que solo al poner el dni salte si hay o no error
         }
     }
 })
@@ -124,7 +122,7 @@ catLabel.addEventListener('click',(e) => {
 })
 
 
-categories.forEach(input => input.addEventListener('input',(e)=>{
+categories.forEach(input => input.addEventListener('input',async (e)=>{
     e.preventDefault()
     const target = e.target;
     const value = String(target.value).trim();
@@ -136,26 +134,92 @@ categories.forEach(input => input.addEventListener('input',(e)=>{
     const paragraph = fieldset.querySelector("p");
     const card = fieldset.nextElementSibling;
     const cardCategory = card.querySelector("h3")
+    const cardPrice = card.querySelector("p")
     const selectClassList = select.getAttribute('class')
     const selectClasses = selectClassList.split(" ")
     const cardClassList = card.getAttribute('class')
     const cardClasses = cardClassList.split(" ")
  
-    if(selectClasses.includes('active')){
-        select.setAttribute('class','select')
+    if(value == "Socio"){
+    
+            cardCategory.innerHTML = value;
+            
+            paragraph.innerText = value;
+
+            const source = "categorias.json";
+            const request = await fetch(source,{
+            method:"GET",
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+            })
+            const data = await request.json();
+
+            const search = data.find(element => element.nombre.includes("socio"))
+
+            cardPrice.innerHTML = search.value;
+
+            if(selectClasses.includes('active')){
+                select.setAttribute('class','select')
+            }else{
+                select.setAttribute('class','select active')
+            }
+
+            card.setAttribute('class','card active')
+    }else if(value == "no"){
+     
+
+        list.innerHTML = null;
+
+        const source = "categorias.json";
+        const request = await fetch(source,{
+            method:"GET",
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
+        const data = await request.json();
+
+        const filter = data.filter(element => element.value > 0 && element.nombre.includes("socio") != true  )
+        filter.forEach(element => {
+            list.innerHTML += `<li class="option">
+            <label for="category${element.id}">
+                <input type="radio" name="category" id="category${element.id}" value="${element.nombre}">
+                <span class="name">${element.nombre}</span>
+                <span class="price">$ ${element.value}</span>
+            </label>
+            </li>`;
+        });
+
+        console.clear();
+        console.log(data)
     }else{
-        select.setAttribute('class','select active')
+        const source = "categorias.json";
+        const request = await fetch(source,{
+        method:"GET",
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+        })
+        const data = await request.json();
+
+        const search = data.find(element => element.nombre.includes(value))
+
+        cardPrice.innerHTML = search.value;
+
+        cardCategory.innerHTML = search.nombre;
+
+        paragraph.innerText = search.nombre;
+
+
+        if(selectClasses.includes('active')){
+            select.setAttribute('class','select')
+        }else{
+            select.setAttribute('class','select active')
+        }
     }
 
 
-    card.setAttribute('class','card active')
-    
-    
-    if(value.length > 0){
-        cardCategory.innerHTML = value;
-        paragraph.innerText = value;
-    }
 
-    console.clear();
-    console.log(card)
+  
 }))

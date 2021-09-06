@@ -1,0 +1,52 @@
+[{
+    "id" : 1,
+    "nombre": "socio",
+    "value": 0
+},
+{
+    "id" : 2,
+    "nombre": "no socio",
+    "value": 0
+},
+{
+    "id" : 3,
+    "nombre": "Residente",
+    "value": 13000
+},
+{
+    "id" : 4,
+    "nombre": "Residente AAMRGG",
+    "value": 10400
+},
+{
+    "id" : 5,
+    "nombre": "Por convenio",
+    "value": 16000
+},
+{
+    "id": 6,
+    "nombre": "Estudiante de Medicina",
+    "value": 1500
+},
+{
+    "id": 7,
+    "nombre": "J.ANGIOLOGIA y CIRUGIA CARDIOVASCULAR",
+    "value": 1500
+},
+{
+    "id": 8,
+    "nombre": "J.CIRUGIA PLASTICA Y REPARADORA",
+    "value": 7000
+},
+{
+    "id": 9,
+    "nombre": "J.INSTRUMENTACION QUIRURGICA (SOCIOS)",
+    "value": 7000
+},
+{
+    "id": 10,
+    "nombre": "J.INSTRUMENTACION QUIRURGICA (NO SOCIOS)",
+    "value": 1000
+}
+
+]
