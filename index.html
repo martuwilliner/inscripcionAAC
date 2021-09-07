@@ -21,16 +21,16 @@
                 
                 <h2 class="title medium">Sistema de Inscripción Online</h2>
                 
-                <form action="/" method="post" id="form-contact">
+                <form action="/" method="post" id="contact">
                     
-                    <section class="step  active" id="one">
+                    <section :class="['step',step == 1 ? 'active' : '']" id="one">
                         
                         <h3>Bienvenido al sistema de inscripción online de 91° Congreso Argentino de Cirugía.</h3>
                         
                         <p>Por favor complete con sus datos. Todos los campos marcados con <span>*</span> son obligatorios.</p>
                 
                         <fieldset>
-                            <label for="nombre" class="light">Nombre <span>*</span> </label>
+                            <label for="nombre" class="light"> Nombre <span>*</span> </label>
                             <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="light">
                         </fieldset>
 
@@ -41,46 +41,49 @@
                         
                         
                         <fieldset>
-                            <label for="email" class="light">Email <span>*</span></label>
+                            <label for="email" class="light"> Email <span>*</span></label>
                             <input type="text" id="email" name="email" placeholder="ejemplo@email.com" class="light">          
                         </fieldset>
 
                         <fieldset>
-                            <label for="dni" class="light">DNI <span>*</span></label>
-                            <input type="number" id="dni" name="dni" placeholder="DNI" class="light" @blur="verified">          
-                        </fieldset>
-
-                        <fieldset class="custom-select"> 
-                            <label for="category" class="light">Categoría de inscripción <span>*</span></label>
-                            <p @click="showList" data-select="on">Por favor seleccione la categoria correspondiente <i class="fas fa-chevron-down"></i></p>
-                            <ul :class="['select',opened ? 'active' : 'null']"> 
-                                <li class="option" v-for="(item, index) in categorias" :key="index">
-                                    <label for="category{{index}}">
-                                        <input type="radio" name="category" id="category{{index}}" value="{{item.id}}">
-                                        <span class="name">{{item.nombre}}</span>
-                                        <span class="price">${{item.value}}</span>
-                                    </label>
-                                </li>
-                            </ul> 
+                            <label for="dni" class="light"> DNI <span>*</span></label>
+                            <input type="number" id="dni" name="dni" placeholder="DNI" class="light" v-model="dni" @change="validate">          
                         </fieldset>
                         
-                        <article class="card" v-if="select">
-                            <h2>Valor inscripción</h2>
-                            <h3>{{select.nombre}}</h3>
-                            <p>${{select.value}}</p>  
-                        </article>
+                        <fieldset class="multi">
+                            <label for="celular" class="light">Número de celular <span>*</span> </label>
+                            <input type="number" id="celular1" name="celular1" placeholder="+54" class="light">
+                            <input type="number" id="celular2" name="celular2" placeholder="cod. de área" class="light">
+                            <span>15</span>
+                            <input type="tel" id="celular3" name="celular3" placeholder="número sin 15" class="light">
+                        </fieldset>
+
+                        <fieldset>
+                            <label for="user" class="light"> Crea un nombre de usuario <span>*</span></label>
+                            <input type="text" id="user" name="user" placeholder="Usuario" class="light" v-model="user">          
+                        </fieldset>
+
+                        <fieldset>
+                            <label for="user" class="light"> Crea una contraseña <span>*</span></label>
+                            <input type="text" id="user" name="user" placeholder="Ingrese contraseña" class="light" v-model="user">          
+                        </fieldset>
+                        
+                        <fieldset>
+                            <label for="user" class="light"> Repita su contraseña <span>*</span></label>
+                            <input type="text" id="user" name="user" placeholder="Repita contraseña" class="light" v-model="user">          
+                        </fieldset>
+                        
                         
         
-                        <p id="advice"><span class="bold">IMPORTATE:</span>Si usted ya ha realizado un intento de registro previo y no le ha llegado la información de confirmación de su inscripción, escribanos a: <span class="underline"> ayuda@aac.com.ar</span></p>
+                        <!-- <p id="advice"><span class="bold">IMPORTATE:</span>Si usted ya ha realizado un intento de registro previo y no le ha llegado la información de confirmación de su inscripción, escribanos a: <span class="underline"> ayuda@aac.com.ar</span></p> -->
 
                         <fieldset class="unique">
-                            <button type="button" id="next" data-step="two" class="btn solid primary light">Continuar</button>
+                            <button type="button" id="next" @click="nextStep" class="btn solid primary light">Continuar</button>
                         </fieldset>
 
                     </section>
 
-                    <section class="step" id="two">
-
+                    <section :class="['step',step == 2 ? 'active' : '']" id="two">
                         <ul class="controll-step">
                             <li>
                                 <span class="indicator"> <i class="fas fa-check"></i></span>
@@ -88,10 +91,60 @@
                             </li>
                             <li class="active">
                                 <span class="indicator"> 2 </span>
-                                <span>Datos de Inscripción</span>
+                                <span>Categoría</span>
                             </li>
                             <li>
                                 <span class="indicator"> 3 </span>
+                                <span>Especialidad</span>
+                            </li>
+                            <li>
+                                <span class="indicator"> 4 </span>
+                                <span>Pago de Inscripción</span>
+                            </li>
+                        </ul>
+
+                        <fieldset class="custom-select extended" v-if="categorias.length > 0"> 
+                            <label for="category" class="light">5 - Categoría de inscripción para no socios <span>*</span></label>
+                            <ul class="select active full"> 
+                                <li class="option" v-for="(item, index) in categorias" :key="index" >
+                                    <input type="radio" :id="item.id"  name="category" value="{{item.id}}">
+                                    <label :for="item.id" @click="showDetail(item.id)" >
+                                        <span class="name">{{item.nombre}}</span>
+                                        <span class="price">${{item.value}}</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <article class="card active" v-if="select">
+                            <h2>Valor inscripción</h2>
+                            <h3>{{select.nombre}}</h3>
+                            <p>${{select.value}}</p>  
+                        </article>
+
+                        <fieldset class="unique">
+                            <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
+                            <button type="button" id="next" @click="nextStep" class="btn solid primary light">Continuar</button>
+                        </fieldset>
+                    </section>
+
+                    <section :class="['step',step == 3 ? 'active' : '']" id="three">
+
+                        <ul class="controll-step">
+                            <li>
+                                <span class="indicator"> <i class="fas fa-check"></i></span>
+                                <span>Validación de Usuario</span>
+                            </li>
+                            <li>
+                                <span class="indicator"> <i class="fas fa-check"></i> </span>
+                                <span>Categoría</span>
+                            </li>
+                            <li class="active">
+                                <span class="indicator"> 3 </span>
+                                <span>Especialidad</span>
+                            </li>
+                            <li>
+                                <span class="indicator"> 4 </span>
                                 <span>Pago de Inscripción</span>
                             </li>
                         </ul>
@@ -101,10 +154,6 @@
                             <input type="text" id="especialidad" name="especialidad" placeholder="Por favor indique su especialidad" class="light">          
                         </fieldset>
 
-                        <!-- <fieldset>
-                            <label for="otra" class="light">Otra <span>*</span></label>
-                            <input type="text" id="otra" name="otra" placeholder="Especifique aquí su especialidad" class="light">          
-                        </fieldset> -->
 
                         <fieldset>
                             <label for="institucion" class="light">Institución<span>*</span></label>
@@ -116,13 +165,7 @@
                             <input type="text" id="paises" name="paises" placeholder="Por favor ingrese su pais" class="light">          
                         </fieldset>
                     
-                        <fieldset class="multi">
-                            <label for="celular" class="light">Número de celular <span>*</span> </label>
-                            <input type="number" id="celular1" name="celular1" placeholder="+54" class="light">
-                            <input type="number" id="celular2" name="celular2" placeholder="cod. de área" class="light">
-                            <span>15</span>
-                            <input type="tel" id="celular3" name="celular3" placeholder="número sin 15" class="light">
-                        </fieldset>
+                        
                     
                         <fieldset class="file">
                             <p class="light"> Adjunte su certificado <span>*</span> </p>
@@ -170,24 +213,27 @@
                         
 
                          <fieldset class="unique">              
-
-                            <button type="button" class="btn solid primary light" id="last1" data-step="one">Atras</button>
-                            <button type="button" class="btn solid primary light" id="next2" data-step="three">Continuar</button>
+                            <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
+                            <button type="button" class="btn solid primary light" id="next2" @click="nextStep">Continuar</button>
                         </fieldset>
                     </section>
 
-                    <section class="step" id="three">
+                    <section :class="['step',step == 4 ? 'active' : '']" id="four">
                         <ul class="controll-step">
                             <li>
                                 <span class="indicator"> <i class="fas fa-check"></i></span>
                                 <span>Validación de Usuario</span>
                             </li>
+                            <li >
+                                <span class="indicator"> <i class="fas fa-check"></i> </span>
+                                <span>Categoría</span>
+                            </li>
                             <li class="active">
-                                <span class="indicator"> 2 </span>
-                                <span>Datos de Inscripción</span>
+                                <span class="indicator"> 3 </span>
+                                <span>Especialidad</span>
                             </li>
                             <li>
-                                <span class="indicator"> 3 </span>
+                                <span class="indicator"> 4 </span>
                                 <span>Pago de Inscripción</span>
                             </li>
                         </ul>
@@ -195,6 +241,7 @@
                         <p>Seleccione a cuál/es cursos desea participar y se sumará al valor final de su inscripción</p>
                         <fieldset class="custom-select extended">
                             <ul class="select active full">
+                                
                                 <li class="option">
                                     <label for="curso1">
                                             <input type="checkbox" name="curso" id="curso1" value="Cirugía bariátrica y metabólica">
@@ -204,6 +251,7 @@
                                             <span class="masinfo" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
+
                                 <li class="option">
                                     <label for="curso2">
                                         <input type="checkbox" name="curso" id="curso2" value="Cirugía laparoscópica y mininvasiva de avanzada">
@@ -213,6 +261,7 @@
                                         <span class="masinfo" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
+
                                 <li class="option">
                                     <label for="curso3">
                                         <input type="checkbox" name="curso" id="curso3" value="Cirugía de la pared abdominal">
@@ -231,6 +280,7 @@
                                         <span class="masinfo" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
+
                                 <li class="option">
                                     <label for="curso5">
                                         <input type="checkbox" name="curso" id="curso5" value="Cirugía hepatobiliopancreática">
@@ -240,6 +290,7 @@
                                         <span class="masinfo" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
+
                                 <li class="option"> 
                                     <label for="curso6">
                                         <input type="checkbox" name="curso" id="curso6" value="Técnica quirúrgica laparoscópica">
@@ -249,15 +300,7 @@
                                           <span class="masinfo" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
-                                <!-- <li class="option"> 
-                                    <label for="curso6">
-                                        <input type="checkbox" name="curso" id="curso6" value="Técnica quirúrgica laparoscópica">
-                                        <span class="check"></span>
-                                        <span class="course">Técnica quirúrgica laparoscópica</span>
-                                        <span class="price">$700</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
-                                    </label>
-                                </li> -->
+
                                 <li class="option"> 
                                     <label for="curso7">
                                         <input type="checkbox" name="curso" id="curso7" value="Cirugía Plástica y Reparadora">
@@ -315,24 +358,28 @@
                             </ul>
                         </fieldset>
                         <fieldset class="unique">              
-                            <button type="button" class="btn solid primary light" id="last1" data-step="two">Atras</button>
-                            <button type="button" class="btn solid primary light" id="next2" data-step="four">Continuar</button>
+                            <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
+                            <button type="button" class="btn solid primary light" id="next2" @click="nextStep">Continuar</button>
                         </fieldset>
                         
                     </section>
 
-                    <section class="step" id="four">
+                    <section :class="['step',step == 5 ? 'active' : '']" id="five">
                         <ul class="controll-step">
                             <li>
                                 <span class="indicator"> <i class="fas fa-check"></i></span>
                                 <span>Validación de Usuario</span>
                             </li>
-                            <li class="">
+                            <li>
                                 <span class="indicator"> <i class="fas fa-check"></i> </span>
-                                <span>Datos de Inscripción</span>
+                                <span>Categoria</span>
+                            </li>
+                            <li>
+                                <span class="indicator"> <i class="fas fa-check"></i> </span>
+                                <span>Cursos</span>
                             </li>
                             <li class="active">
-                                <span class="indicator"> 3 </span>
+                                <span class="indicator"> 4 </span>
                                 <span>Pago de Inscripción</span>
                             </li>
                         </ul>
@@ -378,15 +425,13 @@
                         </section>
                         
                         <fieldset class="unique">              
-                            <button type="button" class="btn solid primary light" id="last1" data-step="three">Atras</button>
-                            <button type="button" class="btn solid primary light" id="next2" data-step="exito">Continuar</button>
+                            <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
+                            <button type="button" class="btn solid primary light" id="next2" @click="nextStep">Continuar</button>
                         </fieldset>
 
                     </section>
                         
-
-
-                    <section class="step" id="error">
+                    <section :class="['step',step == 6 ? 'active' : '']" id="error">
                         <figure>
                             <img src="assets/error.png" alt="registro exitoso"> 
                         </figure>
@@ -394,7 +439,8 @@
                         <h3>Si desea continuar con la inscripción al evento por favor comuniquese con tesorería (tesoreria@aac.org.ar) para conocer su situación respecto a la cuota societaria.</h3>
                         <!-- <button type="button" id="tesoreria" class="btn solid primary light">Contactarse con tesorería</button> -->
                     </section>
-                    <section class="step" id="exito">
+
+                    <section :class="['step',step == 7 ? 'active' : '']" id="exito">
                         <figure>
                             <img src="assets/exito.png" alt="registro exitoso">
                         </figure>

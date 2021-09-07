@@ -9,58 +9,9 @@ const catLabel = document.querySelector('p[data-select="on"]')
 const formulario = document.querySelector('#form-contact');
 // Functions
 
-const showStep = (id) => {
-    steps.forEach(step => step.classList.remove("active"));
-    const step = steps.find(step => step.getAttribute("id") == id)
-    if(!step.classList.contains('active')){
-        step.classList.add('active');
-    }
-    console.clear();
-    console.log(step);
-}
+
 
 /* validación */
-const inputAll = Array.from(document.querySelectorAll('input'));
-const dni = inputAll.find(input => input.getAttribute("id").toLowerCase().includes("dni"));
-dni.addEventListener("blur",async function (e){
-    e.preventDefault();
-    try {
-    const input = e.target;
-    const value = input.value;
-    if(value.length >7){ //1er if para verificar que escribio y hay dígitos a comproabr
-        const server = "https://aac.raxar.com.ar"; // esta es la API que está subida
-        const source = `${server}/api/partners/${value}`; 
-        console.log(source);
-        const request = await fetch(source,{
-            method:"GET",   
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiZjIxYjg2ZDExNTNiMGJjODcwNTllMWZmNTg1ZTk3OTNjYjZhMjQ3Y2M5ZTJkOTI1MTNjOWMzMWE2NmI2MzY1NDM5ZTNlZTIwMmNhODA5ZGQiLCJpYXQiOjE2MzA2NzQwNzAuNDA0MjUxLCJuYmYiOjE2MzA2NzQwNzAuNDA0MjU0LCJleHAiOjE2NjIyMTAwNzAuMzk5OTM4LCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.MFHIRi5SQv1umsw2lRVdsqtGJhpmuiN-8P81agHgcDiCyXDyY9vEgY5CciFWm9mb0IHNiC9gRrYpV8cUs7IWy-VYHz7_eFRtVpOKi-iJ8sLSk3k8Kg6drVzbrojepO5nq6J_DM5Yjo-84SOYPDB70x_fwFfU4u4Q1778A9619Ou-_mNP7ypq8o8OWN5Fs02Y1MJKcXoXGySU5wnq0TDwslCYrqqNenILj-MMSgppjqwnWvT3ITbYhm57qsDDLOCB0llIb7si3edGsYWOGkt8JOD14vRlpt-faRonW9CDLs28-O_r7n3s3A6Ef2DjeGFR4nFiOGPSX3jj8GM7l01H9fueJU6ebYxSdYhNpHsqkKnPT9gELUkUHfRZtGFcXXviYxL_yqcVeujmb4TwWLhlhEuzKUmH-OlDwYbY4hEwrhnS8sGqZxzwOU9fbR6EZxPp0yehNI_X24pGMC_zzBsdixY2sTysmiyQVtXTu2qQiVqsi55_8-LUgXqSTFQLJawF36JGCT_x876gdj3exnaxdyRQxwk2avvS0DkV8GM_03cduu2AFPpqLM9fSS7kMQB8bwg0NS5TeUjgB2vIPKc_9fAWmcC7mllE7l0jCzK2_09fYfBajJJehcnYLwpNmSRK9F6KviN2GyiX2tJx1GsFRzDDQBZk-yUNl5UwrS-DNh4'
-            })
-        })
-        const data = await request.json();
-        const {balance} = data;
-        console.log(balance);
-
-        const siguiente = document.querySelector('#next');
-
-        if(balance > 0){
-            siguiente.setAttribute("data-step","error")  //toma dos atributos, devuelve el segundo
-            siguiente.click(); // para que solo al poner el dni salte si hay o no error
-        }
-    }   
-    } catch (error) {
-        console.log(error)
-        if(error != undefined){
-            const siguiente = document.querySelector('#next');
-            siguiente.setAttribute("data-step","two")  //toma dos atributos, devuelve el segundo
-            /* siguiente.click(); */ // para que solo al poner el dni salte si hay o no error
-        }
-    }
-})
-
-/* fin validación */
-
 
 const showPopUp = (id) => {
     const pop = popUps.find(pop => pop.getAttribute("id") == id);
@@ -80,12 +31,7 @@ const showPopUp = (id) => {
 }
 
 
-btnSteps.forEach(btn => btn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    const target = e.target;
-    const step = target.dataset.step
-    showStep(step)
-}))
+
 
 present.forEach(input => input.addEventListener('input',(e)=>{
     e.preventDefault()
@@ -104,3 +50,7 @@ btnPop.forEach(btn => btn.addEventListener('click',(e)=>{
     showPopUp(pop);
     console.clear();
 }))
+
+
+
+
