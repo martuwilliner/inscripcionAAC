@@ -284,7 +284,7 @@ span.course {
 
 span.price{
     margin-right: 1rem;
-    
+    display: none;
 }
 span.masinfo{
     text-decoration: underline;

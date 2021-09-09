@@ -3,8 +3,24 @@ const form =  {
         return {
             categorias:[],
             select: null,
-            opened: true,
-            dni:'',
+            nombre: '',
+            apellido: '',
+            email:'',
+            dni:0,
+            mobileP1:'',
+            mobileP2: '',
+            mobileP3: '',
+            user: '',
+            password: '',
+            repeat: '',
+            category: '',
+            especialidad: '',
+            institucion: '',
+            pais: '',
+            certificado: '',
+            present: '',
+            curso: [],
+            direccion: '',
             step: 1
         }
     },
@@ -50,7 +66,22 @@ const form =  {
         },
         lastStep: function () {
             this.step -= 1
+        },
+        showPop: function (event) {
+            const target = event.target;
+            const element = target.classList.contains("fas") ? target.parentElement : target;
+            const data = element.dataset.pop;
+            document.querySelectorAll(".popUp").forEach(element => element.classList.remove("active"))
+            document.querySelector(`.popUp#${data}`).classList.add("active")
+            setTimeout(() => document.querySelectorAll(".popUp").forEach(element => element.classList.remove("active")),3000)
+        },
+        readFile: (event) => {
+            const target = event.target;
+            const files = target.files;
+            const file =  files[0].type.includes("pdf","jpg", "docx")
+            target.value = null;
         }
+
     }
 }
 

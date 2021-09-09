@@ -31,18 +31,18 @@
                 
                         <fieldset>
                             <label for="nombre" class="light"> Nombre <span>*</span> </label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="light">
+                            <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="light" v-model="nombre" >
                         </fieldset>
 
                         <fieldset>
                             <label for="apellido" class="light"> Apellido <span>*</span></label>
-                            <input type="text" id="apellido" name="apellido" placeholder="Apellido" class="light">
+                            <input type="text" id="apellido" name="apellido" placeholder="Apellido" class="light" v-model="apellido">
                         </fieldset>
                         
                         
                         <fieldset>
                             <label for="email" class="light"> Email <span>*</span></label>
-                            <input type="text" id="email" name="email" placeholder="ejemplo@email.com" class="light">          
+                            <input type="text" id="email" name="email" placeholder="ejemplo@email.com" class="light" v-model="email">          
                         </fieldset>
 
                         <fieldset>
@@ -52,10 +52,10 @@
                         
                         <fieldset class="multi">
                             <label for="celular" class="light">Número de celular <span>*</span> </label>
-                            <input type="number" id="celular1" name="celular1" placeholder="+54" class="light">
-                            <input type="number" id="celular2" name="celular2" placeholder="cod. de área" class="light">
+                            <input type="number" id="celular1" name="celular1" placeholder="+54" class="light" v-model="mobileP1">
+                            <input type="number" id="celular2" name="celular2" placeholder="cod. de área" class="light" v-model="mobileP2">
                             <span>15</span>
-                            <input type="tel" id="celular3" name="celular3" placeholder="número sin 15" class="light">
+                            <input type="tel" id="celular3" name="celular3" placeholder="número sin 15" class="light"  v-model="mobileP3">
                         </fieldset>
 
                         <fieldset>
@@ -65,12 +65,12 @@
 
                         <fieldset>
                             <label for="user" class="light"> Crea una contraseña <span>*</span></label>
-                            <input type="text" id="user" name="user" placeholder="Ingrese contraseña" class="light" v-model="user">          
+                            <input type="text" id="user" name="user" placeholder="Ingrese contraseña" class="light" v-model="password">          
                         </fieldset>
                         
                         <fieldset>
                             <label for="user" class="light"> Repita su contraseña <span>*</span></label>
-                            <input type="text" id="user" name="user" placeholder="Repita contraseña" class="light" v-model="user">          
+                            <input type="text" id="user" name="user" placeholder="Repita contraseña" class="light" v-model="repeat">          
                         </fieldset>
                         
                         
@@ -107,7 +107,7 @@
                             <label for="category" class="light">5 - Categoría de inscripción para no socios <span>*</span></label>
                             <ul class="select active full"> 
                                 <li class="option" v-for="(item, index) in categorias" :key="index" >
-                                    <input type="radio" :id="item.id"  name="category" value="{{item.id}}">
+                                    <input type="radio" :id="item.id"  name="category" :value="item.id" v-model="category">
                                     <label :for="item.id" @click="showDetail(item.id)" >
                                         <span class="name">{{item.nombre}}</span>
                                         <span class="price">${{item.value}}</span>
@@ -151,27 +151,27 @@
 
                         <fieldset>
                             <label for="especialidad" class="light">Especialidad <span>*</span></label>
-                            <input type="text" id="especialidad" name="especialidad" placeholder="Por favor indique su especialidad" class="light">          
+                            <input type="text" id="especialidad" name="especialidad" placeholder="Por favor indique su especialidad" class="light" v-model="especialidad">          
                         </fieldset>
 
 
                         <fieldset>
                             <label for="institucion" class="light">Institución<span>*</span></label>
-                            <input type="text" id="institucion" name="institucion" placeholder="institucion" class="light">          
+                            <input type="text" id="institucion" name="institucion" placeholder="institucion" class="light" v-model="institucion">          
                         </fieldset>
 
                         <fieldset>
                             <label for="paises" class="light">Paises<span>*</span></label>
-                            <input type="text" id="paises" name="paises" placeholder="Por favor ingrese su pais" class="light">          
+                            <input type="text" id="paises" name="paises" placeholder="Por favor ingrese su pais" class="light" v-model="pais">          
                         </fieldset>
                     
                         
                     
                         <fieldset class="file">
-                            <p class="light"> Adjunte su certificado <span>*</span> </p>
+                            <p class="light"> Adjunte su certificado (acepta PDF, JPG y DOCX)<span>*</span> </p>
                             <label for="certificado" class="light">Adjuntar certificado <i class="fas fa-file-download"></i></label>
-                            <input type="file" id="certificado" name="certificado">
-                            <button type="button" data-pop="info" class="btn">
+                            <input type="file" id="certificado" name="certificado" @change="readFile" accept=".pdf,.jpg,.docx">
+                            <button type="button" @click="showPop" data-pop="info" class="btn">
                                 <i class="fas fa-info"></i>
                             </button>   
                         </fieldset>
@@ -185,12 +185,12 @@
 
                         <fieldset class="alter">
                             <p> ¿Desea participar de manera presencial? </p>
-                            <input type="radio" id="present1" name="present" data-pop="yes" value="yes">
+                            <input type="radio" id="present1" name="present" @click="showPop" data-pop="yes" value="yes" v-model="present">
                             <label for="present1" class="light">
                                 Si
                             </label>
 
-                            <input type="radio" id="present2" name="present" data-pop="no" value="no">
+                            <input type="radio" id="present2" name="present" @click="showPop" data-pop="no" value="no" v-model="present">
                             <label for="present2" class="light">
                                 No
                             </label>
@@ -244,115 +244,115 @@
                                 
                                 <li class="option">
                                     <label for="curso1">
-                                            <input type="checkbox" name="curso" id="curso1" value="Cirugía bariátrica y metabólica">
+                                            <input type="checkbox" name="curso" id="curso1" value="Cirugía bariátrica y metabólica" v-model="curso">
                                             <span class="check"></span>
                                             <span class="course">Cirugía bariátrica y metabólica</span>
                                             <span class="price">$1300</span>
-                                            <span class="masinfo" data-pop="curso">Ver más</span>
+                                            <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
 
                                 <li class="option">
                                     <label for="curso2">
-                                        <input type="checkbox" name="curso" id="curso2" value="Cirugía laparoscópica y mininvasiva de avanzada">
+                                        <input type="checkbox" name="curso" id="curso2" value="Cirugía laparoscópica y mininvasiva de avanzada" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">Cirugía laparoscópica y mininvasiva de avanzada</span>
                                         <span class="price">$1300</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                        <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
 
                                 <li class="option">
                                     <label for="curso3">
-                                        <input type="checkbox" name="curso" id="curso3" value="Cirugía de la pared abdominal">
+                                        <input type="checkbox" name="curso" id="curso3" value="Cirugía de la pared abdominal" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">Cirugía de la pared abdominal</span>
                                         <span class="price">$1300</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                        <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
                                 <li class="option">
                                     <label for="curso4">
-                                        <input type="checkbox" name="curso" id="curso4" value="Cirugía del trauma">
+                                        <input type="checkbox" name="curso" id="curso4" value="Cirugía del trauma" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">Cirugía del trauma</span>
                                         <span class="price">$1300</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                        <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
 
                                 <li class="option">
                                     <label for="curso5">
-                                        <input type="checkbox" name="curso" id="curso5" value="Cirugía hepatobiliopancreática">
+                                        <input type="checkbox" name="curso" id="curso5" value="Cirugía hepatobiliopancreática" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">Cirugía hepatobiliopancreática</span>
                                         <span class="price">$1300</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                        <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
 
                                 <li class="option"> 
                                     <label for="curso6">
-                                        <input type="checkbox" name="curso" id="curso6" value="Técnica quirúrgica laparoscópica">
+                                        <input type="checkbox" name="curso" id="curso6" value="Técnica quirúrgica laparoscópica" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">Técnica quirúrgica laparoscópica</span>
                                         <span class="price">$700</span>
-                                          <span class="masinfo" data-pop="curso">Ver más</span>
+                                          <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
 
                                 <li class="option"> 
                                     <label for="curso7">
-                                        <input type="checkbox" name="curso" id="curso7" value="Cirugía Plástica y Reparadora">
+                                        <input type="checkbox" name="curso" id="curso7" value="Cirugía Plástica y Reparadora" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">Cirugía Plástica y Reparadora</span>
                                         <span class="price">$1300</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                        <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
                                 <li class="option"> 
                                     <label for="curso8">
-                                        <input type="checkbox" name="curso" id="curso8" value="Flebología actual en servicios de Cirugía">
+                                        <input type="checkbox" name="curso" id="curso8" value="Flebología actual en servicios de Cirugía" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">Flebología actual en servicios de Cirugía</span>
                                         <span class="price">$1300</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                        <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
                                 <li class="option"> 
                                     <label for="curso9">
-                                        <input type="checkbox" name="curso" id="curso9" value="Cirugía toráctica">
+                                        <input type="checkbox" name="curso" id="curso9" value="Cirugía toráctica" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">Cirugía toráctica</span>
                                         <span class="price">$1300</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                        <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
                                 <li class="option"> 
                                     <label for="curso10">
-                                        <input type="checkbox" name="curso" id="curso10" value="Coloproctología">
+                                        <input type="checkbox" name="curso" id="curso10" value="Coloproctología" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">Coloproctología</span>
                                         <span class="price">$1300</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                        <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
                                 <li class="option"> 
                                     <label for="curso10">
-                                        <input type="checkbox" name="curso" id="curso10" value="CA-ACS">
+                                        <input type="checkbox" name="curso" id="curso10" value="CA-ACS" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">CA-ACS</span>
                                         <span class="price">$1300</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                        <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
                                 <li class="option"> 
                                     <label for="curso10">
-                                        <input type="checkbox" name="curso" id="curso10" value="Liderazgo en Cirugía">
+                                        <input type="checkbox" name="curso" id="curso10" value="Liderazgo en Cirugía" v-model="curso">
                                         <span class="check"></span>
                                         <span class="course">Liderazgo en Cirugía</span>
                                         <span class="price">$1300</span>
-                                        <span class="masinfo" data-pop="curso">Ver más</span>
+                                        <span class="masinfo" @click="showPop" data-pop="curso">Ver más</span>
                                     </label>
                                 </li>
                             </ul>
@@ -389,7 +389,7 @@
 
                         <fieldset class="info">
                             <p>Residente</p>
-                            <p>$13.000</p>
+                            <p>$13.000</p> 
                         </fieldset>
 
 
@@ -408,7 +408,7 @@
 
                         <fieldset class="check">
                             <label for="direccion">
-                                <input type="checkbox" name="direccion" id="direccion">
+                                <input type="checkbox" name="direccion" id="direccion" v-model="direccion">
                                 <span class="check"></span>
                             </label>  
                             <p>Direccion de facturación</p>
