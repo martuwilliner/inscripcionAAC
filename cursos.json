@@ -1,0 +1,147 @@
+[
+    {
+        "id": 1,
+        "nombre": "Cirugía laparoscópica y mininvasiva de avanzada",
+        "oradores": ["Luis Gramática"],
+        "descripcion": "3 módulos de 90 minutos c/u. Se extenderá certificado a quienes asistan al 50% del curso Presentación de conferencias de veinte minutos alusivas a los temas indicados, finalizando con presentación de casos clínicos",
+        "precios":[ 
+            {
+                "value": 1300,
+                "categorias": 1
+            },
+            {
+                "value": 700,
+                "categorias": [3,4]
+            },
+            {
+                "value": 2000,
+                "categorias": null
+            }
+        ],
+        "modulos":[
+            {
+                "1": "Módulo I: Cirugía colorrectal. Cáncer de recto. Técnica y resultados del abordaje laparoscópico/robótico. Técnica laparoscópica / robótica de la patología colónica programada.Estado actual de la resección total del mesorrecto transanal (taTME). Escisión total del mesocolon y linfadenectomías D3. Presentación de caso clínico",
+                "2":"Módulo II: Cirugía esofagogastrointestinal. Reparación laproscópica/robótica de las hernias paraesofágicas gigantes. Cardiomiotomía de Heller laparoscópica/robótica. Técnica y resultados a largo plazo. Gastrectomía total laparoscópica/robótica con linfadenectomía D1 + D2. ¿Cómo la hago paso por paso?. Lecciones aprendidas después de complicaciones post gastrectomía total laparoscópica. Presentación de caso clínico",
+                "3": "Módulo III: Cirugía hepatobiliopancreática. Manejo de la litiasis de la vía biliar por vía laparoscópica. Pancreatectomía distal laparoscópica / robótica: ¿Cómo, cuándo y por qué lo hago así?,¿Cómo realizo la Whipple laparoscópica?, ¿Cómo y cuándo planeo una resección vascular?.Hepatectomías miniinvasivas .Presentación de caso clínico"
+            }
+        ],
+        "participantes": 0,
+        "virtuales": 500
+    },
+    {
+        "id": 2,
+        "nombre": "Cirugía de la pared abdominal",
+        "oradores": ["Dr. J. Pablo Medina", "Dr. Walther Minatti"],
+        "descripcion": "2 módulos de 90 minutos c/u. Se extenderá certificado a quienes asistan al 50% del curso. Presentación de conferencias de quince minutos alusivas a los temas indicados",
+        "precios":[ 
+            {
+                "value": 1300,
+                "categorias": 1
+            },
+            {
+                "value": 700,
+                "categorias": [3,4]
+            },
+            {
+                "value": 2000,
+                "categorias": null
+            }
+        ],
+        "modulos":[
+            {
+                "1": "Módulo I:  Eventraciones. Toma de decisiones basada en algoritmos para la reparación de la hernia ventral. Laparoscopia para hernia ventral compleja. Cirugía robótica de hernia incisional, Inguinal y gran número de hernia inguinal recidivada por robótica. Opciones extraperitoneales para la reparación de la hernia ventral",
+                "2":"Módulo II: Hernias. Laparoscopia para hernia inguinal recurrente. Evolución de la reparación de la hernia inguinal en los últimos 20 años. Manejo de las complicaciones de las hernias. ¿Qué ofrece Etep sobre las técnicas endoscópicas habituales?"
+            }
+        ],
+        "participantes": 170,
+        "virtuales": 500
+    },
+    {
+        "id": 3,
+        "nombre": "Cirugía del trauma",
+        "oradores": ["Dr. Daniel E. Pero"],
+        "descripcion": "2 módulos de 90 minutos c/u. Se extenderá certificado a quienes asistan al 50% del curso. Presentación de conferencias de quince minutos alusivas a los temas indicados",
+        "precios":[ 
+            {
+                "value": 1300,
+                "categorias": 1
+            },
+            {
+                "value": 700,
+                "categorias": [3,4]
+            },
+            {
+                "value": 2000,
+                "categorias": null
+            }
+        ],
+        "modulos":[
+            {
+                "1": "Módulo I: Control del daño resucitativo. Trauma de cuello. Trauma esofágico. Trauma cardiaco.",
+                "2":"Módulo II:Traumatismo duodenal / pancreático. Trauma hepático. Trauma en paciente bariátrico. Laparoscopia en trauma"
+            }
+        ],
+        "participantes": 0,
+        "virtuales": 500
+    },
+    {
+        "id": 4,
+        "nombre": "Cirugía hepatobiliopancreática",
+        "oradores": ["Dr. Emilio G. Quiñonez "],
+        "descripcion": "3 módulos de 90 minutos c/u. Se extenderá certificado a quienes asistan al 50% del curso. Presentación de conferencias de quince minutos alusivas a los temas indicados, finalizando con presentación de casos clínicos",
+        "precios":[ 
+            {
+                "value": 1300,
+                "categorias": 1
+            },
+            {
+                "value": 850,
+                "categorias": [3,4]
+            },
+            {
+                "value": 2500,
+                "categorias": null
+            }
+        ],
+        "modulos":[
+            {
+                "1": "Módulo I - Hígado. Resultados oncológicos luego de ALPPS por metástasis hepáticas de cáncer colorrectal. Trasplante hepático en metástasis colorrectales: ¿el nuevo desafío?. Estrategias quirúrgicas para el carcinoma hepatocelular en Japón.Presentación de Casos Clínicos",
+                "2":"Módulo II - Páncreas. Cirugía pancreática robótica. Operaciones radicales para cáncer pancreático con reconstrucción vascular mayor. ¿Cuál es la mejor estrategia para el cáncer de páncreas borderline? Presentación de Casos Clínicos",
+                "3": "Módulo III - Vía biliar. Colangiocarcinoma: optimizando los resultados de la resección quirúrgica. Manejo actual del cáncer de vesícula. Cirugía robótica de vías biliares. Presentación de Casos Clínicos"
+            }
+        ],
+        "participantes": 0,
+        "virtuales": 500
+    },
+    {
+        "id": 5,
+        "nombre": "LIDERAZGO EN CIRUGIA ACADÉMICA",
+        "oradores": ["Dr. Sundeep Keswani (USA)", "Dr. Ankush Gosein (USA)","Dr. Alberto R Ferreres","Dr. Martín A. Duhalde"],
+        "descripcion": "3 módulos de 90 minutos c/u. Se extenderá certificado a quienes asistan al 50% del curso. Presentación de conferencias de quince minutos alusivas a los temas indicados, finalizando con presentación de casos clínicos",
+        "precios":[ 
+            {
+                "value": 700,
+                "categorias": 1
+            },
+            {
+                "value": 700,
+                "categorias": [3,4]
+            },
+            {
+                "value": 1500,
+                "categorias": null
+            }
+        ],
+        "modulos":[
+            {
+                "1": "Módulo I: Liderazgo en cirugía. Menterazgo y sponsoreo en cirugía académica. Alcanzando visibilidad local, nacional e internacional. ¿Cómo identificar futuros lideres en cirugia?. ",
+                "2":"Módulo II: Diversidad, equidad e inclusión: principios y lineamientos para la organización de equipos de trabajo exitosos. Cirujano científico: una especie en peligro de extinción. ¿Cómo ser líder en innovaciones quirúrgicas?. ",
+                "3": "Módulo III: De líderes y equipos de trabajo: ¿cómo integrarlos? El líder transformacional: ¿cómo lograr el mejor entorno?"
+            }
+        ],
+        "participantes":90,
+        "virtuales": 500
+    }
+    
+    
+]

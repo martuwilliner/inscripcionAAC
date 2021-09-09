@@ -2,29 +2,34 @@ const form =  {
     data() {
         return {
             categorias:[],
+            cursos:[],
             select: null,
             nombre: '',
             apellido: '',
             email:'',
-            dni:0,
+            dni:'',
             mobileP1:'',
             mobileP2: '',
             mobileP3: '',
             user: '',
             password: '',
             repeat: '',
-            category: '',
+            category: 0,
             especialidad: '',
             institucion: '',
             pais: '',
             certificado: '',
             present: '',
-            curso: [],
+            seleccion: [],
             direccion: '',
+            total:0,
             step: 1
         }
     },
     async created() {
+        const response = await fetch("cursos.json");
+        const data = await response.json();
+        this.cursos = data
     },
     methods: {
         showList: function () {
@@ -50,6 +55,9 @@ const form =  {
                     })
                 });
                 const data = await response.json();
+                if(data.balance > 0){
+                    this.step = 6
+                }
                 const responseCat = await fetch("categorias.json");
                 const dataCat = await responseCat.json();
                 const items = dataCat.filter(item => item.id == 1);
@@ -62,7 +70,11 @@ const form =  {
             }
         },
         nextStep: function () {
-            this.step += 1
+            if(this.step <= 4){
+                this.step += 1
+            }else{
+                this.step += 2
+            }
         },
         lastStep: function () {
             this.step -= 1
@@ -80,8 +92,33 @@ const form =  {
             const files = target.files;
             const file =  files[0].type.includes("pdf","jpg", "docx")
             target.value = null;
-        }
+        },
+        showCurse: async function(event) {
+            const target = event.target;
+            const id = target.dataset.pop;
+            const response = await fetch("cursos.json");
+            const data = await response.json();
+            const item = data.find(item => item.id == id);
+            console.log(item)
+        },
+        cart: function () {
+            const precios = [];
+            const categoria = this.category;
+            for (const curso of this.seleccion) {
+                curso.precios.forEach( precio => {
+                if(categoria == 1 ){
+                    precios.push(curso.precios[0].value)
+                }else if( categoria == 3 || categoria== 4){
+                    precios.push(curso.precios[1].value)
+                }else{
+                    precios.push(curso.precios[2].value)
+                }
 
+                })
+            }
+           const sumatoria = precios.reduce((a,b) => parseInt(a) + parseInt(b), 0 )
+           this.total = sumatoria / 3 ;
+        }
     }
 }
 
