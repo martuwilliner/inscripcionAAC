@@ -46,14 +46,15 @@ const form =  {
             this.dni = parseInt(this.dni); 
             try {
                 const server = "https://aac.raxar.com.ar"; // esta es la API que está subida
-                const source = `${server}/api/partners/${this.dni}`;
-                const response = await fetch(source,{
+                const endpoint = `${server}/api/partners/${this.dni}`;
+                const settings = {
                     method:"GET",  
                     headers: new Headers({
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2E1NWM5NTQzYjYyMDc0YmY5ZjZkMjc2MjFkN2I3NGI1MGM4NjNkOWRhN2ExNDA3MGI5MGJiZDg3OWM5NDExODE5MDVlNDVjZDZiMTZkMTUiLCJpYXQiOjE2MzE1NDI4NTIuNzMwNTU0LCJuYmYiOjE2MzE1NDI4NTIuNzMwNTU4LCJleHAiOjE2NjMwNzg4NTIuNzI2NDQ0LCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.EZdEn-MmML3V9SNqRZCCRVhUi2jB17dNSh--sQ4jTkv7RK1eFkF_MbbSqIc9HwG02o0NywaISC_sCZQOXizw71KRfWVO-2s9R1zEY8dw4C_IFOuX5zijFEPjveEt3QZrjfHGFuC_2YzUeesYW4vilwQlLWFEcEjT3IuY77U3tqdpklOI69dei1Bw2aLFQCNmDH0i1hr3gsDjXy4V4f5tTsl_LQcP0fX_JHqRnQXhS66iyB4Uy7ixFa9Onf8yw1pfszbA_hVsJwpcM3oobduTrYKtZFNVFz7qCS6pGDM441PUddxfQxEC3CBtnB90aiq3VtVR7tZS9MPfTuCiVgdNwbaocHvZ3yEwZkMFnDKM9xIY4f1G01ATkn65V52hm-nZC83zNOOuAc7_zbVi6qszakzALSnQWQWv8SRYLpEc_UIDcM3DKMACrqpzoRgcCD2ZuJwfQgMr_5MrPkoYr3ue4nE1MlmF29IXK3S1vNJGQ6uQZpVSYfcTp1-I6NjmDvQ_s7wUyOnkTuz662Yzv8bYB1lxGQNuOeYFRHpTseaxLhLoxh2VzUxOiXjE6j3vUl_j5oN5LqKRdm1ZWOBZS9ja66TFoboVRialA8GMk4kuAx39dLx2WU1Yj6pWCFbIWplIRHW39IZcGYRKru_xGVNg9qT-Au0Rnlu_S7SdU3Wa35Y'
                     })
-                });
+                }
+                const response = await fetch(endpoint,settings);
                 const data = await response.json();
                 if(data.balance > 0){
                     this.step = 6
@@ -119,7 +120,46 @@ const form =  {
            const sumatoria = precios.reduce((a,b) => parseInt(a) + parseInt(b), 0 )
            this.total = sumatoria / 3 ;
            this.total += categoria.value ;
-        }
+        },
+        registred: async function (){
+            if(this.step == 5){
+                try {
+                    const data = {
+                        first_name: this.nombre,
+                        last_name: this.apellido,
+                        email: this.email,
+                        especiality: this.especialidad,
+                        institution: this.institucion,
+                        country: this.pais,
+                        phone: `${this.mobileP1}${this.mobileP2}15${this.mobileP3}`,
+                        certificate: this.certificado,
+                        category_id: this.category,
+                        password: this.password,
+                        user: this.user
+                    }
+
+                    const server = "https://aac.raxar.com.ar"; // esta es la API que está subida
+                    const endpoint = `${server}/api/register`;
+                    const settings = {
+                        method:"POST",  
+                        headers: new Headers({
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2E1NWM5NTQzYjYyMDc0YmY5ZjZkMjc2MjFkN2I3NGI1MGM4NjNkOWRhN2ExNDA3MGI5MGJiZDg3OWM5NDExODE5MDVlNDVjZDZiMTZkMTUiLCJpYXQiOjE2MzE1NDI4NTIuNzMwNTU0LCJuYmYiOjE2MzE1NDI4NTIuNzMwNTU4LCJleHAiOjE2NjMwNzg4NTIuNzI2NDQ0LCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.EZdEn-MmML3V9SNqRZCCRVhUi2jB17dNSh--sQ4jTkv7RK1eFkF_MbbSqIc9HwG02o0NywaISC_sCZQOXizw71KRfWVO-2s9R1zEY8dw4C_IFOuX5zijFEPjveEt3QZrjfHGFuC_2YzUeesYW4vilwQlLWFEcEjT3IuY77U3tqdpklOI69dei1Bw2aLFQCNmDH0i1hr3gsDjXy4V4f5tTsl_LQcP0fX_JHqRnQXhS66iyB4Uy7ixFa9Onf8yw1pfszbA_hVsJwpcM3oobduTrYKtZFNVFz7qCS6pGDM441PUddxfQxEC3CBtnB90aiq3VtVR7tZS9MPfTuCiVgdNwbaocHvZ3yEwZkMFnDKM9xIY4f1G01ATkn65V52hm-nZC83zNOOuAc7_zbVi6qszakzALSnQWQWv8SRYLpEc_UIDcM3DKMACrqpzoRgcCD2ZuJwfQgMr_5MrPkoYr3ue4nE1MlmF29IXK3S1vNJGQ6uQZpVSYfcTp1-I6NjmDvQ_s7wUyOnkTuz662Yzv8bYB1lxGQNuOeYFRHpTseaxLhLoxh2VzUxOiXjE6j3vUl_j5oN5LqKRdm1ZWOBZS9ja66TFoboVRialA8GMk4kuAx39dLx2WU1Yj6pWCFbIWplIRHW39IZcGYRKru_xGVNg9qT-Au0Rnlu_S7SdU3Wa35Y'
+                        }),
+                        body: JSON.stringify(data)
+                    }
+                    const response = await fetch(endpoint,settings);
+                    const info = await response.json();
+
+                    if(info.success){
+                        this.nextStep()
+                    }
+                    
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        } 
     }
 }
 
