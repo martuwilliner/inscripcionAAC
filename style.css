@@ -523,11 +523,15 @@ fieldset.alter {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    width: 40%;
 }
 
 fieldset.alter p {
     color:var(--primary);
     font-weight: 600;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 fieldset.alter  label{
@@ -764,10 +768,11 @@ fieldset.check input:checked  ~ .check{
 @media screen and (max-width:1400px) {
     fieldset.multi{
         justify-content: flex-start;
+        
     }
    fieldset.multi input[type="tel"]{
        width:calc(40% - 1rem);
-       margin: 0 .25rem;
+       /* margin: 0 .2rem; */
    }
 
    fieldset.file {
@@ -823,7 +828,7 @@ fieldset.check input:checked  ~ .check{
 @media screen and (min-width:320px) and (max-width:1024px){
     #form{
         width: calc(100vw - 1rem);
-        height: auto;
+        height: 100%;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
@@ -842,7 +847,6 @@ fieldset.check input:checked  ~ .check{
         width: 100%;
         font-size: 1.25rem;
         padding: 1rem 0.25rem;
-
     }
     #content h3{
         font-size: .8rem;
@@ -856,7 +860,7 @@ fieldset.check input:checked  ~ .check{
     #form form fieldset:not(.special):not(.check):not(.info):not(.unique):not(.multi):not(.file):not(.alter):not(.custom-select), #form form fieldset.custom-select{
         margin:0;
         width: 100%;
-        margin-bottom:.7rem;
+        margin-bottom:.5rem;
     }
     #form form fieldset:not(.special):not(.check):not(.info):not(.unique):not(.multi):not(.file):not(.alter):not(.custom-select) input, #form form fieldset.custom-select p {
         height: 2rem !important;

@@ -104,7 +104,7 @@
                         </ul>
 
                         <fieldset class="custom-select extended" v-if="categorias.length > 0"> 
-                            <label for="category" class="light">5 - Categoría de inscripción para no socios <span>*</span></label>
+                            <label for="category" class="light">Seleccione su categoria<span>*</span></label>
                             <ul class="select active full"> 
                                 <li class="option" v-for="(item, index) in categorias" :key="index" >
                                     <input type="radio" :id="item.id"  name="category" :value="item" v-model="category">
