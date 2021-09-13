@@ -118,6 +118,7 @@ const form =  {
             }
            const sumatoria = precios.reduce((a,b) => parseInt(a) + parseInt(b), 0 )
            this.total = sumatoria / 3 ;
+           this.total += categoria.value ;
         }
     }
 }

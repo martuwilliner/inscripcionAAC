@@ -107,8 +107,8 @@
                             <label for="category" class="light">Seleccione su categoria<span>*</span></label>
                             <ul class="select active full"> 
                                 <li class="option" v-for="(item, index) in categorias" :key="index" >
-                                    <input type="radio" :id="item.id"  name="category" :value="item" v-model="category">
-                                    <label :for="item.id" @click="showDetail(item.id)" >
+                                    <input type="radio" :id='"categoria-"+item.id'  name="category" :value="item" v-model="category">
+                                    <label :for='"categoria-"+item.id' @click="showDetail(item.id)" >
                                         <span class="name">{{item.nombre}}</span>
                                         <span class="price">${{item.value}}</span>
                                     </label>
@@ -241,8 +241,8 @@
                         <p>Seleccione a cuál/es cursos desea participar y se sumará al valor final de su inscripción</p>
                         <ul class="couses-list">
                             <li class="couses-item" v-for="(curso, index) in cursos" :key="index">
-                                <input type="checkbox" name="curso" :id="curso.id" :value="curso" v-model="seleccion" @change="cart">
-                                <label :for="curso.id" class="couses-data">
+                                <input type="checkbox" name="curso" :id='"curso-"+curso.id' :value="curso" v-model="seleccion" @change="cart">
+                                <label :for='"curso-"+curso.id' class="couses-data">
                                         <span  class="couses-check" ></span>
                                         <span  class="couses-name">{{curso.nombre}}</span>
                                         <span  class="couses-price" v-if="category === 1">{{curso.precios[0].value}}</span>
@@ -282,7 +282,7 @@
                         
                         <p class="resume">Categoría de Inscripción</p>
 
-                        <fieldset class="info">
+                        <fieldset class="info" v-if="category">
                             <p>{{category.nombre}}</p>
                             <p>{{category.value}}</p> 
                         </fieldset>
@@ -318,6 +318,7 @@
                         
                         <fieldset class="unique">              
                             <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
+                            <button type="button" class="btn solid primary light" id="next2" @click="nextStep">Continuar</button>
 
                         </fieldset>
 
@@ -339,7 +340,7 @@
                         <h2>Inscripción exitosa</h2>
                         <h3>En estos momentos tesoreria verá su inscripción y le confirmará su ingreso al Congreso</h3>
                         <fieldset class="unique">
-                        <button type="button" id="close" class="btn solid primary light">Continuar</button>
+                        <button type="button" id="close" class="btn solid primary light">Pagar</button>
                         </fieldset>
                     </section>
                 </form>
