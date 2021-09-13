@@ -443,6 +443,7 @@ fieldset.file input[type="file"] {
 
 fieldset.file p {
     flex: 1 0 100%;
+    font-size: 0.8rem;
 }
 
 
@@ -514,7 +515,9 @@ fieldset.multi #celular1{
 fieldset.multi #celular2{
     width: 25%;
 }
-
+fieldset.multi #celular3{
+    width: 40%;
+}
 
 fieldset.alter {
     background-color: var(--input);
@@ -568,11 +571,13 @@ fieldset.alter  input:checked + label{
     flex-flow: row wrap;
     justify-content: space-between;
     height: 3rem;
-    margin-bottom: 1rem;;
+    margin-bottom: 1rem;
+    width: 100%;
+    
 }
 
 .controll-step li{
-    flex: 1 0 aut0;
+    flex: 1 0 20%;
     margin-right: 1rem;
     display: flex;
     justify-content: space-between;
@@ -832,6 +837,7 @@ fieldset.check input:checked  ~ .check{
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
+        overflow: scroll;
     }
     
     #form #content{
@@ -915,7 +921,7 @@ fieldset.check input:checked  ~ .check{
     }
     .card p{
         width: 100%;
-        padding: .5rem;
+        padding-bottom: 3rem;
         text-align: center;
         font-size:1rem !important;
     }
@@ -1008,10 +1014,15 @@ fieldset.check input:checked  ~ .check{
     }
 
     fieldset .select.active.full .option label{
-        flex-direction: row wrap;
+        flex-flow: row wrap;
         justify-content: flex-start;
         position: relative;
         padding: 0 1.5rem;
+        flex: 1 0 100%;
+        align-items: center;
+    }
+    span.price{
+        display: none;
     }
     fieldset .select.active.full .option label span.course{
         width: 100% !important;
@@ -1049,5 +1060,37 @@ fieldset.check input:checked  ~ .check{
     .total .price{
         font-size: 1.2rem;
     }
+    fieldset .select.active.full {
+        overflow: scroll !important;
+        overflow-y: scroll !important;
+        max-height: 80vh !important;
+        min-height: 65vh !important;
+    }
+    fieldset .select.active.full .option {
+        width: 100%;
+        height: 5vh !important;
+        justify-content: space-between;
+        margin-bottom: 1.25rem;
+    }
+    .couses-list {
+        width: 100%;
+        max-height: 85vh;
+        min-height: 65vh;
+    }
+    .couses-item{
+        height: 4vh;
+        margin: 1rem;
+    }
+    .couses-price{
+        display: none;
+    }
+    .couses-show{
+        display: none;
+    }
 }
 
+@media screen and (min-width: 1401px){
+    fieldset.alter p {
+        font-size: .8rem;   
+    }
+}
