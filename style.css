@@ -295,6 +295,7 @@ span.course {
 
 span.price{
     margin-right: 1rem;
+    display: none;
 }
 span.masinfo{
     text-decoration: underline;
@@ -415,6 +416,7 @@ fieldset.unique{
 .popUp.active h3{
     font-weight: 700;
     margin-bottom: .5rem;
+    
 }
 
 .popUp.active::before{
@@ -425,6 +427,13 @@ fieldset.unique{
     background-color:var(--primary);
     left: 0;
     top: 0;
+}
+
+#info.popUp.active{
+    height: auto;
+}
+#info.popUp.active strong{
+    color: var(--primary);
 }
 
 fieldset.file {
@@ -765,9 +774,12 @@ fieldset.check input:checked  ~ .check{
 }
 
 .couses-show {
-
-    margin: 0 1rem
-    
+    cursor: pointer;
+    margin: 0 1rem;
+    transition: all .3s ease-in-out;
+}
+.couses-show:hover {
+    text-decoration: underline;   
 }
 
 .course-pop{

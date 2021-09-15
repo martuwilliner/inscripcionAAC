@@ -16,7 +16,7 @@
 {
     "id" : 4,
     "nombre": "Residente AAMRGG",
-    "value": 10400
+    "value": 9000
 },
 {
     "id" : 5,
@@ -31,7 +31,7 @@
 {
     "id": 7,
     "nombre": "J.ANGIOLOGIA y CIRUGIA CARDIOVASCULAR",
-    "value": 1500
+    "value": 7000
 },
 {
     "id": 8,
@@ -40,13 +40,23 @@
 },
 {
     "id": 9,
-    "nombre": "J.INSTRUMENTACION QUIRURGICA (SOCIOS)",
-    "value": 7000
+    "nombre": "J. INSTRUMENTACION QUIRURGICA (SOCIOS)",
+    "value": 1000
 },
 {
     "id": 10,
-    "nombre": "J.INSTRUMENTACION QUIRURGICA (NO SOCIOS)",
-    "value": 1000
+    "nombre": "J. INSTRUMENTACION QUIRURGICA (NO SOCIOS)",
+    "value": 2000
+},
+{
+    "id": 11,
+    "nombre":"J. INSTRUMENTACION QUIRURGICA (ESTUDIANTE)",
+    "value": 500
+},
+{
+    "id": 12,
+    "nombre": "No Socios AAC",
+    "value": 20000
 }
 
 ]

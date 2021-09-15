@@ -167,7 +167,7 @@
                     
                         
                     
-                        <fieldset class="file">
+                        <fieldset class="file" v-if="category !== 1">
                             <p class="light"> Adjunte su certificado (acepta PDF, JPG y DOCX)<span>*</span> </p>
                             <label for="certificado" class="light">Adjuntar certificado <i class="fas fa-file-download"></i></label>
                             <input type="file" id="certificado" name="certificado" @change="readFile" accept=".pdf,.jpg,.docx">
@@ -179,11 +179,38 @@
                         <article id="info" class="popUp">
                             <h3>Información</h3>
                             
-                            <p>Recuerde que en caso de no adjuntar la constancia requerida, no presentarla al momento de su acreditación y/o esta no corresponde con la categoría de inscripción, deberá abonar la diferencia monetaria que exista entre ellas.
+                            <p>
+                                <strong>NO SOCIOS POR CONVENIO</strong><br>
+
+                                Adjuntar copia digital de su carnet de socio <br>
+
+                                Sociedades de Cirugía con convenio vigente:<br>
+
+                                Bolivia, Francia, México, España, Costa Rica, Uruguay y Paraguay.<br><br>
+
+                                <strong>RESIDENTES</strong> <br>
+
+                                Adjuntar constancia de médico residente<br><br>
+
+                                <strong>RESIDENTES AAMRCG</strong><br>
+
+                                Adjuntar constancia de médico residente y copia digital de su carnet de socio<br><br>
+
+                                <strong>ESTUDIANTE DE MEDICINA</strong> <br>
+
+                                Adjuntar certificado de alumno regular en la Carrera de Médico<br><br>
+
+                                <strong>J. INSTRUMENTACION QUIRURGICA – SOCIO/A AADI</strong><br>
+                                    
+                                Adjunte aquí copia digital de su carnet de socio/a AADI<br><br>
+
+                                <strong>J. INSTRUMENTACION QUIRURGICA – ESTUDIANTE</strong> <br>
+
+                                Adjunte aquí certificado de alumno regular en la Carrera de Instrumentación Quirúrgica <br><br>
                             </p>
                         </article>
 
-                        <fieldset class="alter">
+                        <fieldset class="alter" v-if="category === 1">
                             <p> ¿Desea participar de manera presencial? </p>
                             <input type="radio" id="present1" name="present" @click="showPop" data-pop="yes" value="yes" v-model="present">
                             <label for="present1" class="light">
@@ -350,14 +377,14 @@
                             <p>
                                 Total a pagar
                             </p>
-                            <span class="price">
+                            <span class="price-total">
                                 ${{total}}
                             </span>
                         </section>
                         
                         <fieldset class="unique">              
                             <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
-                            <button type="button" class="btn solid primary light" id="next2" @click="registred">Inscribirse</button>
+                            <button type="button" class="btn solid primary light" id="next2" @click="nextStep">Inscribirse</button>
 
                         </fieldset>
 
@@ -367,8 +394,8 @@
                         <figure>
                             <img src="assets/error.png" alt="problema al registrarse"> 
                         </figure>
-                        <h2>Error con sus datos</h2>
-                        <h3>Si desea continuar con la inscripción al evento por favor comuniquese con tesorería (tesoreria@aac.org.ar) para conocer su situación respecto a la cuota societaria.</h3>
+                        <h2>Error de validación</h2>
+                        <h3>Por favor comuniquese con tesorería (tesoreria@aac.org.ar) para conocer su situación respecto a la cuota societaria.</h3>
                         <!-- <button type="button" id="tesoreria" class="btn solid primary light">Contactarse con tesorería</button> -->
                     </section>
 
@@ -379,7 +406,23 @@
                         <h2>Inscripción exitosa</h2>
                         <h3>En estos momentos tesoreria verá su inscripción y le confirmará su ingreso al Congreso</h3>
                         <fieldset class="unique">
-                        <button type="button" id="close" class="btn solid primary light">Pagar</button>
+                            <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                                <input name="merchantId"    type="hidden"  value="555520"   >
+                                <input name="accountId"     type="hidden"  value="" >
+                                <input name="ApiKey"     type="hidden"  value="I3Rr3bxSjfDqyQI7Yt0OOhOJUG" >
+                                <input name="description"   type="hidden"  value="Congreso ACC"  >
+                                <input name="referenceCode" type="hidden"  :value="">
+                                <input name="amount"        type="hidden"  :value="total">
+                                <input name="tax"           type="hidden"  value="0">
+                                <input name="taxReturnBase" type="hidden"  value="0">
+                                <input name="currency"      type="hidden"  value="ARG">
+                                <input name="signature"     type="hidden"  value="">
+                                <input name="test"          type="hidden"  value="0">
+                                <input name="buyerEmail"    type="hidden"  :value="email" >
+                                <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >
+                                <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
+                                <button type="submit" id="close" class="btn solid primary light">Pagar</button>
+                            </form>
                         </fieldset>
                     </section>
                 </form>
