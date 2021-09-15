@@ -248,10 +248,49 @@
                                         <span  class="couses-price" v-if="category === 1">{{curso.precios[0].value}}</span>
                                         <span  class="couses-price" v-else-if="category === 3 || category === 4">{{curso.precios[1].value}}</span>
                                         <span  class="couses-price" v-else>{{curso.precios[2].value}}</span>
-                                        <span  class="couses-show"  @click="showCurse"  :data-pop="curso.id">Ver más</span>
+                                        <span  class="couses-show"  @click="showCurse"  :data-pop='"curso-pop-"+curso.id'>Ver más</span>
                                 </label>
                             </li>
                         </ul>
+
+                        <article :id='"curso-pop-"+curso.id' class="course-pop" v-for="(curso, index) in cursos" :key="index">
+
+                            <section class="course-header">
+                                <span  class="course-close"  @click="showCurse"  data-pop=''>
+                                    <i class="fas fa-times"></i>
+                                </span>
+                                <span  class="course-name">{{curso.nombre}}</span>
+                                <span  class="course-price" v-if="category === 1">${{curso.precios[0].value}}</span>
+                                <span  class="course-price" v-else-if="category === 3 || category === 4">${{curso.precios[1].value}}</span>
+                                <span  class="course-price" v-else>${{curso.precios[2].value}}</span>
+                            </section>
+                            <section class="course-body">
+                                <p class="course-text">
+                                    {{curso.descripcion}}    
+                                </p>
+
+
+                                <ul class="course-list">
+                                    <li v-for="(orador, index) in curso.oradores" :key="index" >
+                                        {{orador}}
+                                    </li>
+                                    <li> Incluye Certificado</li>
+                                    <li> Duración: 60 minutos</li>
+                                </ul>
+
+                                <article class="course-participants">
+                                    <p class="course-title"> Vacantes Disponibles </p>
+                                    <p class="course-counter">
+                                        <i class="fas fa-user"></i>
+                                        <span  class="courses-dispo" v-if="category === 1">{{curso.participantes}}</span>
+                                        <span  class="courses-dispo" v-else>{{curso.virtuales}}</span>
+                                    </p>
+                                </article>
+                            </section>
+                            
+                        </article>
+
+
                         <fieldset class="unique">              
                             <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
                             <button type="button" class="btn solid primary light" id="next2" @click="nextStep">Continuar</button>

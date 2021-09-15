@@ -770,6 +770,117 @@ fieldset.check input:checked  ~ .check{
     
 }
 
+.course-pop{
+    display: flex;
+    width: 25vw;
+    height: 50vh;
+    background: snow;
+    top: 20vh;
+    position: absolute;
+    transform: scale(0);
+    transition: all .5s ease-in-out;
+    flex-flow: row wrap;
+}
+
+.course-pop.active{
+    transform: scale(1);
+    box-shadow: 0px 4px 15px rgba(51, 153, 153, 0.5);  
+}
+
+.course-header {
+    height: 15vh;
+    padding: 1rem;
+    background: linear-gradient(250.39deg, #1E4A4A -0.19%, #101E1E 99.81%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex: 1 0 auto;
+}
+
+.course-price {
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+    background-color: var(--input);
+    color: var(--primary);
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+
+}
+
+.course-close{
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    color: snow !important;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(54.37px);
+}
+
+.course-name {
+    width: 75%;
+    text-align: center;
+    color: snow !important;
+    line-height: 2rem;
+}
+
+.course-body {
+    display: flex;
+    flex: 1 0 100%;
+    flex-flow: row wrap;
+    height: calc(50vh - 15vh);
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.course-text{
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.course-list{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-flow: row wrap;
+}
+
+.course-list li{
+    font-size: .75rem;
+    padding: .25rem .75rem;
+    background-color: var(--input);
+    color: var(--primary);
+}
+.course-participants{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    border-top: .05rem solid grey;
+    padding: 1rem;
+}
+
+.course-title{
+    margin: 0rem 0rem 1rem;
+}
+.course-counter{
+    display: flex;
+    justify-content: flex-start;
+    width: 25%;
+    flex-flow: row wrap;
+    color: #CC6666
+}
+.courses-dispo{
+    margin-left: .25rem;
+    color: #CC6666 !important
+}
+
 @media screen and (max-width:1400px) {
     fieldset.multi{
         justify-content: flex-start;

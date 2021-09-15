@@ -96,11 +96,10 @@ const form =  {
         },
         showCurse: async function(event) {
             const target = event.target;
-            const id = target.dataset.pop;
-            const response = await fetch("cursos.json");
-            const data = await response.json();
-            const item = data.find(item => item.id == id);
-            console.log(item)
+            const element = target.classList.contains("fas") ? target.parentElement : target;
+            const data = element.dataset.pop;
+            document.querySelectorAll(".course-pop").forEach(element => element.classList.remove("active"))
+            document.querySelector(`.course-pop#${data}`).classList.add("active")
         },
         cart: function () {
             const precios = [];
@@ -108,18 +107,18 @@ const form =  {
             for (const curso of this.seleccion) {
                 curso.precios.forEach( precio => {
                 if(categoria == 1 ){
-                    precios.push(curso.precios[0].value)
+                    precios.push(parseInt(curso.precios[0].value))
                 }else if( categoria == 3 || categoria== 4){
-                    precios.push(curso.precios[1].value)
+                    precios.push(parseInt(curso.precios[1].value))
                 }else{
-                    precios.push(curso.precios[2].value)
+                    precios.push(parseInt(curso.precios[2].value))
                 }
 
                 })
             }
            const sumatoria = precios.reduce((a,b) => parseInt(a) + parseInt(b), 0 )
-           this.total = sumatoria / 3 ;
-           this.total += categoria.value ;
+           this.total = parseInt(sumatoria) / 3 ;
+           this.total += parseInt(categoria.value) ;
         },
         registred: async function (){
             if(this.step == 5){
