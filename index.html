@@ -21,7 +21,7 @@
                 
                 <h2 class="title medium">Sistema de Inscripción Online</h2>
                 
-                <form action="/" method="post" id="contact">
+                <form action="/" method="post" id="contact" v-if="step < 5">
                     
                     <section :class="['step',step == 1 ? 'active' : '']" id="one">
                         
@@ -166,9 +166,9 @@
                         </fieldset>
                     
                         
-                    
-                        <fieldset class="file" v-if="category !== 1">
-                            <p class="light"> Adjunte su certificado (acepta PDF, JPG y DOCX)<span>*</span> </p>
+                
+                        <fieldset class="file" v-if="category.id !== 1">
+                            <p class="light"> Adjunte su certificado (acepta PDF, JPG y DOCX)<span>*</span> {{category.id}} </p>
                             <label for="certificado" class="light">Adjuntar certificado <i class="fas fa-file-download"></i></label>
                             <input type="file" id="certificado" name="certificado" @change="readFile" accept=".pdf,.jpg,.docx">
                             <button type="button" @click="showPop" data-pop="info" class="btn">
@@ -210,7 +210,7 @@
                             </p>
                         </article>
 
-                        <fieldset class="alter" v-if="category === 1">
+                        <fieldset class="alter" v-if="category.id == 1">
                             <p> ¿Desea participar de manera presencial? </p>
                             <input type="radio" id="present1" name="present" @click="showPop" data-pop="yes" value="yes" v-model="present">
                             <label for="present1" class="light">
@@ -324,108 +324,114 @@
                         </fieldset>
                         
                     </section>
-
-                    <section :class="['step',step == 5 ? 'active' : '']" id="five">
-                        <ul class="controll-step">
-                            <li>
-                                <span class="indicator"> <i class="fas fa-check"></i></span>
-                                <span>Validación de Usuario</span>
-                            </li>
-                            <li>
-                                <span class="indicator"> <i class="fas fa-check"></i> </span>
-                                <span>Categoria</span>
-                            </li>
-                            <li>
-                                <span class="indicator"> <i class="fas fa-check"></i> </span>
-                                <span>Cursos</span>
-                            </li>
-                            <li class="active">
-                                <span class="indicator"> 4 </span>
-                                <span>Pago de Inscripción</span>
-                            </li>
-                        </ul>
-                        <h3 class="title">¡Ya casi hemos terminado!</h3>
-                        
-                        <p class="resume">Categoría de Inscripción</p>
-
-                        <fieldset class="info" v-if="category">
-                            <p>{{category.nombre}}</p>
-                            <p>{{category.value}}</p> 
-                        </fieldset>
-
-
-                        <p class="resume">Cursos Elegidos</p>
-                        <section id="courses" >
-                            <fieldset class="info" v-for="(item, index) in seleccion" :key="index">
-                                <p>{{item.nombre}}</p>
-                                <p v-if="category === 1">{{item.precios[0].value}}</p>
-                                <p v-else-if="category === 3 || category === 4">{{item.precios[1].value}}</p>
-                                <p v-else>{{item.precios[2].value}}</p>
-                            </fieldset>
-                        </section>
-
-                        <fieldset class="check">
-                            <label for="direccion">
-                                <input type="checkbox" name="direccion" id="direccion" v-model="direccion">
-                                <span class="check"></span>
-                            </label>  
-                            <p>Direccion de facturación</p>
-                            <p>Click aquí para introducir datos de facturación (si requiere distintos a su nombre y apellido)</p>
-                        </fieldset>
-                        
-                        <section class="total">
-                            <p>
-                                Total a pagar
-                            </p>
-                            <span class="price-total">
-                                ${{total}}
-                            </span>
-                        </section>
-                        
-                        <fieldset class="unique">              
-                            <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
-                            <button type="button" class="btn solid primary light" id="next2" @click="nextStep">Inscribirse</button>
-
-                        </fieldset>
-
-                    </section>
-                        
-                    <section :class="['step',step == 6 ? 'active' : '']" id="error">
-                        <figure>
-                            <img src="assets/error.png" alt="problema al registrarse"> 
-                        </figure>
-                        <h2>Error de validación</h2>
-                        <h3>Por favor comuniquese con tesorería (tesoreria@aac.org.ar) para conocer su situación respecto a la cuota societaria.</h3>
-                        <!-- <button type="button" id="tesoreria" class="btn solid primary light">Contactarse con tesorería</button> -->
-                    </section>
-
-                    <section :class="['step',step == 7 ? 'active' : '']" id="exito">
-                        <figure>
-                            <img src="assets/exito.png" alt="registro exitoso">
-                        </figure>
-                        <h2>Inscripción exitosa</h2>
-                        <h3>En estos momentos tesoreria verá su inscripción y le confirmará su ingreso al Congreso</h3>
-                        <fieldset class="unique">
-                            <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
-                                <input name="merchantId"    type="hidden"  value="555520"   >
-                                <input name="accountId"     type="hidden"  value="" >
-                                <input name="ApiKey"     type="hidden"  value="I3Rr3bxSjfDqyQI7Yt0OOhOJUG" >
-                                <input name="description"   type="hidden"  value="Congreso ACC"  >
-                                <input name="referenceCode" type="hidden"  :value="">
-                                <input name="amount"        type="hidden"  :value="total">
-                                <input name="tax"           type="hidden"  value="0">
-                                <input name="taxReturnBase" type="hidden"  value="0">
-                                <input name="currency"      type="hidden"  value="ARG">
-                                <input name="signature"     type="hidden"  value="">
-                                <input name="test"          type="hidden"  value="0">
-                                <input name="buyerEmail"    type="hidden"  :value="email" >
-                                <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >
-                                <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
-                                <button type="submit" id="close" class="btn solid primary light">Pagar</button>
-                            </form>
-                        </fieldset>
-                    </section>
                 </form>
+
+                <section :class="['step',step == 5 ? 'active' : '']" id="five">
+                    <ul class="controll-step">
+                        <li>
+                            <span class="indicator"> <i class="fas fa-check"></i></span>
+                            <span>Validación de Usuario</span>
+                        </li>
+                        <li>
+                            <span class="indicator"> <i class="fas fa-check"></i> </span>
+                            <span>Categoria</span>
+                        </li>
+                        <li>
+                            <span class="indicator"> <i class="fas fa-check"></i> </span>
+                            <span>Cursos</span>
+                        </li>
+                        <li class="active">
+                            <span class="indicator"> 4 </span>
+                            <span>Pago de Inscripción</span>
+                        </li>
+                    </ul>
+                    <h3 class="title">¡Ya casi hemos terminado!</h3>
+                    
+                    <p class="resume">Categoría de Inscripción</p>
+
+                    <fieldset class="info" v-if="category">
+                        <p>{{category.nombre}}</p>
+                        <p>{{category.value}}</p> 
+                    </fieldset>
+
+
+                    <p class="resume">Cursos Elegidos</p>
+                    <section id="courses" >
+                        <fieldset class="info" v-for="(item, index) in seleccion" :key="index">
+                            <p>{{item.nombre}}</p>
+                            <p v-if="category === 1">{{item.precios[0].value}}</p>
+                            <p v-else-if="category === 3 || category === 4">{{item.precios[1].value}}</p>
+                            <p v-else>{{item.precios[2].value}}</p>
+                        </fieldset>
+                    </section>
+
+                    <fieldset class="check">
+                        <label for="direccion">
+                            <input type="checkbox" name="direccion" id="direccion" v-model="direccion">
+                            <span class="check"></span>
+                        </label>  
+                        <p>Direccion de facturación</p>
+                        <p>Click aquí para introducir datos de facturación (si requiere distintos a su nombre y apellido)</p>
+                    </fieldset>
+                    
+                    <section class="total">
+                        <p>
+                            Total a pagar
+                        </p>
+                        <span class="price-total">
+                            ${{total}} 
+                        </span>
+                    </section>
+                    
+                    <fieldset class="unique">              
+                        <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
+                        <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                            <input name="merchantId"    type="hidden"  value="555520"   >
+                            <input name='accountId'     type='hidden'  value='557889' >
+                            <input name="ApiKey"     type="hidden"  value="I3Rr3bxSjfDqyQI7Yt0OOhOJUG" >
+                            <input name="description"   type="hidden"  value="91 Congreso ACC"  >
+                            <input name="referenceCode" type="hidden"  value="91congresoAcc2021">
+                            <input name="amount"        type="hidden"  :value="total">
+                            <input name="tax"           type="hidden"  value="0">
+                            <input name="taxReturnBase" type="hidden"  value="0">
+                            <input name="currency"      type="hidden"  value="ARG">
+                            <input name='signature'     type='hidden'  value='845ca72a0906d86097797445f310696d'>
+                            <input name="test"          type="hidden"  value="0">
+                            <input name="buyerEmail"    type="hidden"  :value="email" >
+                            <input name="responseUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription/" >
+                            <input name="confirmationUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription" > 
+                            <button type="submit" id="close" class="btn solid primary light">Pagar</button>
+                        </form>
+                    </fieldset>
+                </section>
+
+                <section :class="['step',step == 6 ? 'active' : '']" id="error">
+                    <figure>
+                        <img src="assets/error.png" alt="problema al registrarse"> 
+                    </figure>
+                    <h2>Error de validación</h2>
+                    <h3>Por favor comuniquese con tesorería (tesoreria@aac.org.ar) para conocer su situación respecto a la cuota societaria.</h3>
+                </section>
+
+                <section :class="['step',step == 7 ? 'active' : '']" id="exito">
+                    <figure>
+                        <img src="assets/exito.png" alt="registro exitoso">
+                    </figure>
+                    <h2>Inscripción exitosa</h2>
+                    <h3>En estos momentos tesoreria verá su inscripción y le confirmará su ingreso al Congreso</h3> 
+                </section>
+
+                <section :class="['step',step == 7 ? 'active' : '']" id="exito2">
+                    <figure>
+                        <img src="assets/exito.png" alt="registro exitoso">
+                    </figure>
+                    <h2>Inscripción exitosa</h2>
+                    <h3>
+                        En estos momentos usted ya forma parte del 91° Congreso Argentino de Cirugía.<br>
+                        En breve, usted recibirá en su correo una verificación de su inscripción.<br>
+                        En caso de no aparecer, no olvide de ver la carpeta spam.
+                    </h3> 
+                </section>
             </article>
             
         </section>

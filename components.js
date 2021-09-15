@@ -134,7 +134,9 @@ const form =  {
                         certificate: this.certificado,
                         category_id: this.category,
                         password: this.password,
-                        user: this.user
+                        user: this.user,
+                        is_admin:null,
+                        status: this.category != 1 ? "disable" :"enable"
                     }
 
                     const server = "https://aac.raxar.com.ar"; // esta es la API que está subida
@@ -163,4 +165,4 @@ const form =  {
 }
 
 
-Vue.createApp(form).mount('#contact')
+Vue.createApp(form).mount('#content')
