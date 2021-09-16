@@ -386,20 +386,21 @@
                     <fieldset class="unique">              
                         <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
                         <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
-                            <input name="merchantId"    type="hidden"  value="555520"   >
-                            <input name='accountId'     type='hidden'  value='557889' >
-                            <input name="ApiKey"     type="hidden"  value="I3Rr3bxSjfDqyQI7Yt0OOhOJUG" >
-                            <input name="description"   type="hidden"  value="91 Congreso ACC"  >
+                            <input name="merchantId"    type="hidden"  value="555520">
+                            <input name="accountId"     type="hidden"  value="557889">
+                            <input name="apiKey" type="hidden" value="I3Rr3bxSjfDqyQI7Yt0OOhOJUG">
+                            <input name="apiLogin" type="hidden" value="HB8wMB2I6Cda86B">
+                            <input name="description"   type="hidden"  value="91 Congreso AAC">
                             <input name="referenceCode" type="hidden"  value="91congresoAcc2021">
                             <input name="amount"        type="hidden"  :value="total">
                             <input name="tax"           type="hidden"  value="0">
                             <input name="taxReturnBase" type="hidden"  value="0">
-                            <input name="currency"      type="hidden"  value="ARG">
-                            <input name='signature'     type='hidden'  value='845ca72a0906d86097797445f310696d'>
-                            <input name="test"          type="hidden"  value="0">
-                            <input name="buyerEmail"    type="hidden"  :value="email" >
-                            <input name="responseUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription/" >
-                            <input name="confirmationUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription" > 
+                            <input name="currency"      type="hidden"  value="ARS">
+                            <input name="signature"     type='hidden'  value="845ca72a0906d86097797445f310696d">
+                            <input name="test"          type="hidden"  value="1">
+                            <input name="buyerEmail"    type="hidden"  :value="email">
+                            <input name="responseUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription/">
+                            <input name="confirmationUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription"> 
                             <button type="submit" id="close" class="btn solid primary light">Pagar</button>
                         </form>
                     </fieldset>
