@@ -627,13 +627,17 @@ fieldset.alter  input:checked + label{
 }
 
 .resume{
-    width: 100%; 
-}
-
-.info{
     width: 100%;
+    margin: .5rem .5rem; 
+}
+#courses{
+    width: 100%;
+}
+.info{
+    width: 100% !important;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: snow;
     height: 3rem;
     padding: 1.5rem;
@@ -677,9 +681,9 @@ fieldset.check input:checked  ~ .check{
 
 .total{
     display: flex;
-    justify-content:space-between;
+    justify-content:center;
     align-items:center;
-    width: 40%;
+    width: 100%;
     font-size: 1.5rem;
     margin-left: 3rem;
     padding: 1rem;
@@ -687,6 +691,8 @@ fieldset.check input:checked  ~ .check{
 
 .total span{
     font-weight: 700;
+    color: var(--primary);
+    margin: 0 .5rem;
 }
 #exito figure{
     display: flex;

@@ -20,7 +20,7 @@
 },
 {
     "id" : 5,
-    "nombre": "Por convenio",
+    "nombre": "No Socio/a por convenio Soc. Extranjeras",
     "value": 16000
 },
 {
@@ -35,27 +35,27 @@
 },
 {
     "id": 8,
-    "nombre": "J.CIRUGIA PLASTICA Y REPARADORA",
+    "nombre": "J. Cirugía Plástica y Reparadora",
     "value": 7000
 },
 {
     "id": 9,
-    "nombre": "J. INSTRUMENTACION QUIRURGICA (SOCIOS)",
+    "nombre": "J. Instrumentación Quirúrgica (Socios/as AADI)",
     "value": 1000
 },
 {
     "id": 10,
-    "nombre": "J. INSTRUMENTACION QUIRURGICA (NO SOCIOS)",
+    "nombre": "J. Instrumentación Quirúrgica (No Socios/as AADI)",
     "value": 2000
 },
 {
     "id": 11,
-    "nombre":"J. INSTRUMENTACION QUIRURGICA (ESTUDIANTE)",
+    "nombre":"J. Instrumentación Quirúrgica (Estudiante)",
     "value": 500
 },
 {
     "id": 12,
-    "nombre": "No Socios AAC",
+    "nombre": "No Socio/as AAC",
     "value": 20000
 }
 

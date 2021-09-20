@@ -115,7 +115,7 @@
     },
     {
         "id": 5,
-        "nombre": "LIDERAZGO EN CIRUGIA ACADÉMICA",
+        "nombre": "Liderazgo en Cirugia Academia",
         "oradores": ["Dr. Sundeep Keswani (USA)", "Dr. Ankush Gosein (USA)","Dr. Alberto R Ferreres","Dr. Martín A. Duhalde"],
         "descripcion": "3 módulos de 90 minutos c/u. Se extenderá certificado a quienes asistan al 50% del curso. Presentación de conferencias de quince minutos alusivas a los temas indicados, finalizando con presentación de casos clínicos",
         "precios":[ 
@@ -140,6 +140,121 @@
             }
         ],
         "participantes":90,
+        "virtuales": 500
+    },
+    {
+        "id": 6,
+        "nombre": "Cirugía Bariátrica y Metabólica",
+        "oradores": ["Dr. Carlos Esquivel"],
+        "descripcion": "3 módulos de 90 minutos c/u. Se extenderá certificado a quienes asistan al 50% del curso. Presentación de conferencias de quince minutos alusivas a los temas indicados, finalizando con presentación de casos clínicos",
+        "precios":[ 
+            {
+                "value": 1300,
+                "categorias": 1
+            },
+            {
+                "value": 700,
+                "categorias": [3,4]
+            },
+            {
+                "value": 2000,
+                "categorias": null
+            }
+        ],
+        "modulos":[
+            {
+                "1": "Módulo I: Presentación de videos didácticos que permitan apreciar el desarrollo de las técnicas enumeradas. Conversión de manga a bypass gástrico. Conversión de manga a Bagua robótica. Gastrectomía total por fístula crónica de manga. Conversión de BAGUA a Bypass gástrico",
+                "2":"Módulo II: Presentación de conferencias de quince minutos alusivas a los temas indicados. Anestesia y seguridad en el paciente bariátrico: presente y futuro. Sistema ERAS en cirugía bariátrica. Priorización de pacientes en cirugía bariátrica y metabólica. Cirugia bariátrica en pacientes mayores de 70 años: ¿debe indicarse?. Cirugía bariátrica en adolescentes"
+            }
+        ],
+        "participantes":90,
+        "virtuales": 500
+    },
+    {
+        "id": 7,
+        "nombre": "Debates en cáncer de recto en el año 2021",
+        "oradores": ["Dr. Hugo A. Amarillo","Dr. Mariano Laporte"],
+        "descripcion": "3 módulos de 90 minutos c/u. Se extenderá certificado a quienes asistan al 50% del curso.",
+        "precios":[ 
+            {
+                "value": 1300,
+                "categorias": 1
+            },
+            {
+                "value": 700,
+                "categorias": [3,4]
+            },
+            {
+                "value": 2000,
+                "categorias": null
+            }
+        ],
+        "modulos":[
+            {
+                "1": "Módulo I:Cáncer de recto: ¿se opera en el 2021?. Radioterapia en 2021: ¿cuál esquema es mejor?. Neoadyuvancia: Estrategia actual. Cirugía: ¿siempre?. Cáncer rectal: ¿una enfermedad quirúrgica?. Experiencia en San Pablo",
+                "2":"Módulo II: Cáncer de recto: ¿cómo lo abordamos?. Escisión por extra elevación vs. resección AP estándar. Resección interesfintérica: ¿qué tan bajo debemos ir?. Abordaje del cáncer de recto con metástasis. Experiencia en un Centro en Argentina",
+                "3": "Modulo III: Cirugía mininvasiva en cáncer de recto. Técnica y resultados. Aspectos técnicos de la RTM laparoscópica. Aspectos técnicos de TA-TME. Resultados de la cirugía robótica en cáncer de recto. Seguridad y calidad en la formación en TaTME -programa de la AECP. Linfadenectomía lateral pelviana"
+            }
+        ],
+        "participantes":0,
+        "virtuales": 500
+    },
+    {
+        "id": 8,
+        "nombre": "Cirugia plástica y reparadora",
+        "oradores": ["Dr. Marcelo Bou","Dr. Daniel G. Moina"],
+        "descripcion": "3 módulos de 90 minutos c/u. Se extenderá certificado a quienes asistan al 50% del curso.",
+        "precios":[ 
+            {
+                "value": 1300,
+                "categorias": 1
+            },
+            {
+                "value": 700,
+                "categorias": [3,4]
+            },
+            {
+                "value": 2000,
+                "categorias": null
+            }
+        ],
+        "modulos":[
+            {
+                "1": "Módulo I:Dexia mamaria post cirugía bariátrica. Lipofeeling: distintos usos. Pexia mamaria con prótesis",
+                "2":"Módulo II: Upper body leeft. Dermolipectomía circunferencial",
+                "3": "Modulo III: Rinoplastia cerrada. Rinoplastia leporina. Desproyección nasal. Rinoplastia elección de técnica según anatomia nasal"
+            }
+        ],
+        "participantes":0,
+        "virtuales": 500
+    },
+    {
+        "id": 9,
+        "nombre": "Cirugia torácica",
+        "oradores": ["Tomás G. Nuñez"],
+        "descripcion": "3 módulos de 90 minutos c/u. Se extenderá certificado a quienes asistan al 50% del curso.",
+        "precios":[ 
+            {
+                "value": 1700,
+                "categorias": 1
+            },
+            {
+                "value": 850,
+                "categorias": [3,4]
+            },
+            {
+                "value": 2500,
+                "categorias": null
+            }
+        ],
+        "modulos":[
+            {
+                "1": "Módulo I:Inmunoterapia y resecciones pulmonares. Cirugía torácica robótica para casos complejos. Nuevas tecnologías para el manejo de las deformidades de pared torácica",
+                "2":"Módulo II: Cáncer del pulmón oligometastásico: manejo actual. Actualización en el manejo quirúrgico de nódulos sub-sólidos",
+                "3": "Modulo III: Manejo del derrame pleural maligno en el 2020. Manejo de patología diafragmática"
+            }
+        ],
+        "participantes":0,
         "virtuales": 500
     }
     

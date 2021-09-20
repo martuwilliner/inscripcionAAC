@@ -46,7 +46,7 @@
                         </fieldset>
 
                         <fieldset>
-                            <label for="dni" class="light"> DNI <span>*</span></label>
+                            <label for="dni" class="light"> DNI / LE / CI<span>*</span></label>
                             <input type="number" id="dni" name="dni" placeholder="DNI" class="light" v-model="dni" @change="validate">          
                         </fieldset>
                         
@@ -228,14 +228,14 @@
 
                             <h3>Aviso</h3>
                             
-                            <p>Al participar de manera presencial, usted tendrá la posibilidad de acceder a cursos que se dictarán en el enveto.</p>
+                            <p>Al participar de manera presencial, usted tendrá la posibilidad de acceder a cursos que se dictarán en el evento.</p>
                         </article>
 
                         <article id="no" class="popUp">
 
                             <h3>Aviso</h3>
                              
-                            <p>Al participar de manera virtual, usted NO tendrá la posibilidad de acceder a cursos que se dictarán en el enveto.</p>
+                            <p>Por favor, recuerde que seleccionando esta opción solo podrá participar de las actividades del evento a través de la plataforma virtual, sin excepción.</p>
                         </article>
                         
 
@@ -385,10 +385,10 @@
                     
                     <fieldset class="unique">              
                         <button type="button" class="btn solid primary light" id="last1" @click="lastStep">Atras</button>
-                        <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                        <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu">
                             <input name="merchantId"    type="hidden"  value="555520">
                             <input name="accountId"     type="hidden"  value="557889">
-                            <input name="apiKey" type="hidden" value="I3Rr3bxSjfDqyQI7Yt0OOhOJUG">
+                            <input name="apiKey" type="hidden" value="I3Rr3bxSjfDqyQI7Yt0OOhOJUG"> 
                             <input name="apiLogin" type="hidden" value="HB8wMB2I6Cda86B">
                             <input name="description"   type="hidden"  value="91 Congreso AAC">
                             <input name="referenceCode" type="hidden"  value="91congresoAcc2021">
@@ -396,13 +396,14 @@
                             <input name="tax"           type="hidden"  value="0">
                             <input name="taxReturnBase" type="hidden"  value="0">
                             <input name="currency"      type="hidden"  value="ARS">
-                            <input name="signature"     type='hidden'  value="845ca72a0906d86097797445f310696d">
+                            <input name="signature"  type="hidden" value="845ca72a0906d86097797445f310696d">
                             <input name="test"          type="hidden"  value="1">
                             <input name="buyerEmail"    type="hidden"  :value="email">
                             <input name="responseUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription/">
                             <input name="confirmationUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription"> 
-                            <button type="submit" id="close" class="btn solid primary light">Pagar</button>
+                            <button name="submit" type="button" id="close" class="btn solid primary light">Pagar</button>
                         </form>
+                        
                     </fieldset>
                 </section>
 
@@ -411,8 +412,22 @@
                         <img src="assets/error.png" alt="problema al registrarse"> 
                     </figure>
                     <h2>Error de validación</h2>
-                    <h3>Por favor comuniquese con tesorería (tesoreria@aac.org.ar) para conocer su situación respecto a la cuota societaria.</h3>
-                </section>
+                    <h3>
+                        Por favor, comuníquese con nosotros a través de los siguientes canales:<br>
+                        <strong>E-mail Secretaría Tesorería:</strong><br>
+                        tesoreria@aac.org,ar<br><br>
+                        <strong>WhatsApp:</strong><br>
+                        +54 9 11 4824 8715<br><br>
+                        <strong>Atención telefónica AAC</strong><br> 
+                        (lunes, miércoles y viernes de 13.00 a 19.00 horas)
+
+                        011 48222905<br><br>
+
+                        011 48226458<br><br>
+
+                        011 48253649<br><br>    
+                    </h3>
+                </section> <!-- HACER LINK URGENTE -->
 
                 <section :class="['step',step == 7 ? 'active' : '']" id="exito">
                     <figure>
