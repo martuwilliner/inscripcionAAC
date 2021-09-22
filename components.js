@@ -25,13 +25,38 @@ const form =  {
             total:0,
             step: 1,
             firma: '',
-            referencia:''
+            referencia:'',
+            payment:''
         }
     },
     async created() {
         const response = await fetch("cursos.json");
         const data = await response.json();
-        this.cursos = data
+        this.cursos = data;
+
+        /* --- PARA USAR CON BACKEND---- */
+        let search = location.search.substring(1);
+        let paramsPayU= JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}') /* para pasar toda la URL como objeto */
+        const server = "https://aac.raxar.com.ar"; // esta es la API que está subida
+        const endpoint = `${server}/api/`; // aca falta el endpoint de andres 
+        const settings = {
+            method:"POST",  
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': ''
+            }),
+            body: JSON.stringify(paramsPayU)
+        }
+        const response = await fetch(endpoint,settings);  // Respuesta del endpoint de Andres a la vista
+        const confirmation = response.json();        
+
+        if(confirmation.status == "APPROVED"){
+            this.step = 7
+        }else {
+        this.step = 6
+        }
+
+         /* --- PARA USAR CON BACKEND---- */
     },
     methods: {
         showList: function () {
@@ -130,6 +155,14 @@ const form =  {
            let firmaSin= ("I3Rr3bxSjfDqyQI7Yt0OOhOJUG"+"~"+"555520"+"~"+this.referencia+"~"+ this.total +"~"+ "ARS");
         
             
+           let url= "https://roomin-aac-stag.web.app/inscription/?" 
+           
+           
+           /* merchantId=555520&merchant_name=ASOC+ARG++DE+CIRUGIA&merchant_address=MARCELO+T+DE+ALVEAR+-+2415&telephone=48222905&merchant_url=&transactionState=4&lapTransactionState=APPROVED&message=APPROVED&referenceCode=91congresoAAC2021%2F41222504&reference_pol=1658959337&transactionId=5284cab1-e4cd-4c7f-a458-51ef5dc9127d&description=91+Congreso+AAC&trazabilityCode=907011469609&cus=907011469609&orderLanguage=es&extra1=&extra2=&extra3=&polTransactionState=4&signature=17aad6b283adf49727b173eb7c7df31b&polResponseCode=1&lapResponseCode=APPROVED&risk=&polPaymentMethod=217&lapPaymentMethod=VISA&polPaymentMethodType=2&lapPaymentMethodType=CREDIT_CARD&installmentsNumber=1&TX_VALUE=3500.00&TX_TAX=.00&currency=ARS&lng=es&pseCycle=&buyerEmail=williner.martin%40gmail.com&pseBank=&pseReference1=&pseReference2=&pseReference3=&authorizationCode=008974&TX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE_RETURN_BASE=.00&processingDate=2021-09-22 */
+
+        
+            
+        
            console.log(this.total,this.firma,firmaSin);
         },
         registred: async function (){
@@ -178,3 +211,4 @@ const form =  {
 
 
 Vue.createApp(form).mount('#content')
+

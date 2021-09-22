@@ -396,17 +396,13 @@
                             <input name="tax"           type="hidden"  value="0">
                             <input name="taxReturnBase" type="hidden"  value="0">
                             <input name="currency"      type="hidden"  value="ARS">
-                            <input name="signature"  type="hidden"  :value="firma"> <!-- has que tiene que er dinamico -->
+                            <input name="signature"  type="hidden"  :value="firma">
                             <input name="test"          type="hidden"  value="1">
                             <input name="buyerEmail"    type="hidden"  :value="email">
-                            <input name="responseUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription/"> <!-- redirijir al response payment EXITO O FALLO --- IF exito ELSE error -->
-                            <input name="confirmationUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription"> 
+                            <input name="responseUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription/index.html">
+                            <input name="confirmationUrl"    type="hidden"  value="https://roomin-aac-stag.web.app/inscription/index.html"> 
                             <button name="submit" type="submit" id="close" class="btn solid primary light">Pagar</button> 
                         </form>
-                        <!-- 
-
-
-                         -->
                     </fieldset>
                 </section>
 
@@ -440,7 +436,7 @@
                     <h3>En estos momentos tesoreria verá su inscripción y le confirmará su ingreso al Congreso</h3> 
                 </section>
 
-                <section :class="['step',step == 7 ? 'active' : '']" id="exito2">
+                <section :class="['step',step == 8 ? 'active' : '']" id="exito2">
                     <figure>
                         <img src="assets/exito.png" alt="registro exitoso">
                     </figure>
